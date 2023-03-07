@@ -1,0 +1,49 @@
+@import url("./theme-colors.css");
+
+.f-raleway{
+    font-family: 'Raleway', sans-serif;
+    color: var(--root-font);
+}
+
+.theme-icon:before{
+    content: var(--switch-theme);
+    color: var(--root-font);
+    font-weight: bolder;
+}
+
+.theme-btn{
+    transition: 200ms linear;
+    transform: scale(1.1);
+}
+
+.theme-btn:hover{
+    transform:rotateZ(-30deg)
+}
+
+.error-div{
+    width: calc(200px + 40vmin);
+    height: auto;
+    margin-top: calc(50px + 10vmin);
+    margin-bottom: 50px;
+}
+
+.intro{
+    font-size: 2.5rem;
+    margin-top: 3.2em;
+}
+
+.btn-font{
+    font-size: 0.8rem;
+}
+
+@media (min-width:768px) {
+    .intro{
+        font-size: 3.5rem;
+        margin-top: 3.5em;
+    }
+
+    .btn-font{
+        font-size: 0.88rem;
+    }
+    
+}
