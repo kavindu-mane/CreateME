@@ -5,6 +5,10 @@
     color: var(--root-font);
 }
 
+.header-bg{
+    background-color: var(--background-color);
+}
+
 .theme-icon:before{
     content: var(--switch-theme);
     color: var(--root-font);

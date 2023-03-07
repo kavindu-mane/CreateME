@@ -5,7 +5,8 @@ import Buttons from "./Buttons";
 class Header extends Component {
     render() { 
         return (
-            <React.Fragment>
+            <React.Fragment >
+              <div className="position-fixed container-fluid header-bg pb-2">
                 <div className="mx-md-5 mt-3 d-flex justify-content-between">
                     {/* Logo */}
                     <h2 className="f-raleway ms-3 ms-md-5">Create
@@ -21,6 +22,7 @@ class Header extends Component {
                         </button>
                     </div>
                 </div>
+              </div>
             </React.Fragment>
     );}
 
