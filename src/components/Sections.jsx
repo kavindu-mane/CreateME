@@ -1,4 +1,5 @@
 import React , {Component} from "react";
+import ImageArea from "./ImageArea";
 import Section from "./Section";
 import SkillMatrix from "./SkillMatrix";
 import SocialMatrix from "./SocialMatrix";
@@ -13,9 +14,9 @@ class Sections extends Component {
                     <Section style_class={"col-md-6"} caption_1 = {"Show Your"} caption_2 = {"SOCIAL"}
                     caption_3 = {"Add your all favorite social media profiles.support 20+ platforms."}><SocialMatrix/></Section>
                     <Section style_class={"col-md-6"} caption_1 = {"Show Your"} caption_2 = {"STATS"}
-                    caption_3 = {"Add your GitHub statistic for give an idea to profile viewers."}/>
+                    caption_3 = {"Add your GitHub statistic for give an idea to profile viewers."}><ImageArea image = {"stats"}/></Section>
                     <Section style_class={"col-12 d-md-flex"} caption_1 = {"Copy Your"} caption_2 = {"MARKDOWN"}
-                    caption_3 = {"Copy your generated markdown script and add it to GitHub profile Repo README.md file"}/>
+                    caption_3 = {"Copy your generated markdown script and add it to GitHub profile Repo README.md file"}><ImageArea/></Section>
                 </div>
             </React.Fragment>
         );

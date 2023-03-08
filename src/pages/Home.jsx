@@ -26,6 +26,12 @@ class Home extends Component {
 
                 {/* sections */}
                 <Sections/>
+
+                {/* 2 buttons for go to repo and create pages*/}
+                <div className="container d-flex justify-content-center pb-5">
+                    <Buttons text = {"VISIT REPO (DEV)"} style_class ={"btn-secondary"} link = {"https://github.com/kavindu-mane/profile-readme-generator"}/>
+                    <Buttons style_class = {"btn-primary"} text = {"GET START"} link = {"create"}/>
+                </div>
             </React.Fragment>
         );
     }

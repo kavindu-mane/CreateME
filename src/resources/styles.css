@@ -7,6 +7,7 @@
 
 .header-bg{
     background-color: var(--background-color);
+    z-index: 99;
 }
 
 .theme-icon:before{
@@ -45,8 +46,53 @@
     height: 45px;
 }
 
+.icon-filter{
+    filter: invert(var(--icon-filter));
+}
+
 .icon-rotate:hover{
-    transform:rotateZ(-30deg);
+    transform:rotateZ(-30deg) scale(0.8);
+    cursor: pointer;
+}
+
+.image-area{
+    min-height: 300px;
+    max-height: 500px;
+}
+
+.image-area-example{
+    max-height: 400px;
+    border-radius: 10px;
+    padding: 0;
+    filter: invert(var(--example-img-filter));
+}
+
+.social-icons{
+    width: 20px;
+}
+
+.social-icons-bg{
+    background-color: #fff;
+    display: flex;
+    border-radius: 8px;
+    transition: 300ms linear;
+    transform: rotateZ(0deg) scale(0.85);
+}
+
+.social-icons-bg:hover{
+    transform:rotateZ(-360deg) scale(1);
+    background-color: #2a7eeb;
+}
+
+.social-icons-bg:hover .social-icons{
+    filter: invert(1);
+}
+
+.footer-class{
+    background: linear-gradient(#213547 , #14243a);
+    border-radius: 15px 15px 0 0;
+    margin-top: 40px;
+    padding-top: 10px;
 }
 
 @media (min-width:768px) {

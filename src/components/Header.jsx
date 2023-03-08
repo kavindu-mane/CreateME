@@ -9,8 +9,9 @@ class Header extends Component {
               <div className="position-fixed container-fluid header-bg pb-2">
                 <div className="mx-md-5 mt-3 d-flex justify-content-between">
                     {/* Logo */}
-                    <h2 className="f-raleway ms-3 ms-md-5">Create
-                    <span className="text-primary">ME</span></h2>
+                    <a href="/" className="text-decoration-none">
+                      <h2 className="f-raleway ms-3 ms-md-5">Create
+                      <span className="text-primary">ME</span></h2></a>
 
                     <div className="d-flex align-items-center me-3 me-md-5">
                         {/* get start button */}

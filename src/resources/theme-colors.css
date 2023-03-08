@@ -5,7 +5,9 @@
     --link-hover-background:#bfcbff15;
     --root-color:#101220;
     --root-font:#fff;
-    --switch-theme:"light_mode"
+    --switch-theme:"light_mode";
+    --icon-filter:0.85;
+    --example-img-filter:0;
 }
 
 .light-theme{
@@ -15,7 +17,9 @@
     --link-hover-background:#bfcbff55;
     --root-color:#fefefe;
     --root-font:#091e2b;
-    --switch-theme:"dark_mode"
+    --switch-theme:"dark_mode";
+    --icon-filter:0;
+    --example-img-filter:0.05;
 }
 
 *{
