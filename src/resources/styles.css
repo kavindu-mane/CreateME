@@ -21,7 +21,7 @@
 }
 
 .theme-btn:hover{
-    transform:rotateZ(-30deg)
+    transform:rotateZ(-30deg);
 }
 
 .error-div{
@@ -40,6 +40,15 @@
     font-size: 0.8rem;
 }
 
+.icon-rotate{
+    transition: 300ms linear;
+    height: 45px;
+}
+
+.icon-rotate:hover{
+    transform:rotateZ(-30deg);
+}
+
 @media (min-width:768px) {
     .intro{
         font-size: 3.5rem;
@@ -48,6 +57,10 @@
 
     .btn-font{
         font-size: 0.88rem;
+    }
+
+    .icon-rotate{
+        height: 60px;
     }
     
 }
