@@ -1,6 +1,7 @@
 import React ,{ Component } from "react";
 import  "../resources/styles.css"
 import Buttons from "./Buttons";
+import ToolTip from "./ToolTip";
 
 class Header extends Component {
     render() { 
@@ -9,15 +10,16 @@ class Header extends Component {
               <div className="position-fixed container-fluid header-bg pb-2">
                 <div className="mx-md-5 mt-3 d-flex justify-content-between">
                     {/* Logo */}
-                    <a href="/" className="text-decoration-none">
+                    <a href="/" className="text-decoration-none" data-tip data-for="forLogo">
                       <h2 className="f-raleway ms-3 ms-md-5">Create
                       <span className="text-primary">ME</span></h2></a>
+                    <ToolTip text = "CreateME" id = "forLogo"/>
 
                     <div className="d-flex align-items-center me-3 me-md-5">
                         {/* get start button */}
                         <Buttons style_class = {"btn-primary"} text = {"GET START"} link = {"create"}/>
                         {/* theme changer button */}
-                        <button onClick={this.themeClick} 
+                        <button onClick={this.themeClick}
                         className="theme-btn p-1 ms-2 rounded-circle d-flex align-items-center bg-transparent border-0">
                         <span class="material-symbols-outlined theme-icon"></span>
                         </button>

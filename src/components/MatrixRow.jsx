@@ -1,9 +1,11 @@
 import React , {Component} from "react";
 import "../resources/styles.css";
+import MatrixIcon from "./MatrixIcon";
 
 class MatrixRow extends Component {
     render() { 
         let{icon_1 , icon_2 , icon_3 , icon_4 , section} = this.props;
+        const tooltipValue = [icon_1 , icon_2 , icon_3 , icon_4]
         let imgClass = "icon-rotate p-1"
 
         if (section === 1){
@@ -23,10 +25,10 @@ class MatrixRow extends Component {
         return (
             <React.Fragment>
                 <div className="row d-flex justify-content-center">
-                    <div className="col-2 m-2"><img src={icon_1} alt={icon_1} className={imgClass}/></div>
-                    <div className="col-2 m-2"><img src={icon_2} alt={icon_2} className={imgClass}/></div>
-                    <div className="col-2 m-2"><img src={icon_3} alt={icon_3} className={imgClass}/></div>
-                    <div className="col-2 m-2"><img src={icon_4} alt={icon_4} className={imgClass}/></div>                
+                    <MatrixIcon icon = {icon_1} imgClass = {imgClass} tooltipValue = {tooltipValue[0]}/>
+                    <MatrixIcon icon = {icon_2} imgClass = {imgClass} tooltipValue = {tooltipValue[1]}/>
+                    <MatrixIcon icon = {icon_3} imgClass = {imgClass} tooltipValue = {tooltipValue[2]}/>
+                    <MatrixIcon icon = {icon_4} imgClass = {imgClass} tooltipValue = {tooltipValue[3]}/>
                 </div>
             </React.Fragment>
         );

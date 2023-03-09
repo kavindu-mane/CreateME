@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import React from "react";
 import { BrowserRouter as Router , Routes , Route } from "react-router-dom";
 
+
 const linkedObject = {
   "/":<Home/> ,
   "/create": <Create/>

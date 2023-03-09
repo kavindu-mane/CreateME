@@ -1,5 +1,6 @@
 import React , {Component} from "react";
 import "../resources/styles.css"
+import ToolTip from "./ToolTip";
 
 class Buttons extends Component {
     render() {
@@ -11,8 +12,10 @@ class Buttons extends Component {
             <React.Fragment>
                 <a className={styles}
                 style={{borderRadius:"6px"}}
+                data-tip data-for={"forBtn" + text} 
                 href = {link}>
                     <span className="fw-bold btn-font" >{text}</span></a>
+                <ToolTip text = {text} id = {"forBtn" + text} />
             </React.Fragment>
         );
     }
