@@ -9,7 +9,7 @@ class Section extends Component {
         let aosData2 = "fade-left"
         if(caption_2 === "MARKDOWN"){
             aosData1 = "zoom-out"
-            aosData2 = "fade-up"
+            aosData2 = "zoom-in"
         }
 
         return (
