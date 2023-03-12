@@ -16,7 +16,7 @@ const Demo = () => {
     return (
         <React.Fragment>
             <div className="">
-                <div className="d-flex move-btn-bg rounded-top py-1 justify-content-end">
+                <div className="d-flex move-btn-bg rounded-top py-1 pe-2 justify-content-end">
                     <button className={btnClass + " ms-3"} onClick= {(event) => moveModes(event , "markdown")}>Markdown</button>
                     <button className={btnClass} onClick= {(event) => moveModes(event ,"preview")}>Preview</button>
                 </div>

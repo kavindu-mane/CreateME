@@ -1,228 +1,143 @@
-import React , {useState , useEffect} from 'react';
-import {useMarkdown} from "./MarkDownProvider";
+import React from 'react';
+import {useData} from './DataProvider';
 import Input from "./Input"
-import "../resources/styles.css"
-import InputLabel from './InputLabel';
 import HeadingLabel from './HeadingLabel';
+import "../resources/styles.css"
 
 const BasicInfo = ()  => {
 
-    const [,setMarkdown] = useMarkdown();
-    const [title , setTitle] = useState("Hi , I'm")
-    const [titleValue , setTitleValue] = useState("")
-    const [subtitle , setSubtitle] = useState("A passionate frontend developer from Sri Lanka")
-    const [work , setWork] = useState({"working":"🔭 I'm currently working on",
-                                        "collaborate":"👯 I'm looking to collaborate on",
-                                        "help":"🤝 I'm looking for help with",
-                                        "learning":"🌱 I'm currently learning",
-                                        "about":"💬 Ask me about",
-                                        "reach":"📫 How to reach me",
-                                        "project":"👨‍💻 All of my projects are available at",
-                                        "article":"📝 I regularly write articles on",
-                                        "experience":"📄 Know about my experiences",
-                                        "fun":"⚡ Fun fact",
-                                        })
-    const [workValue , setWorkValue] = useState({"working":"",
-                                        "collaborate":"",
-                                        "help":"",
-                                        "learning":"",
-                                        "about":"",
-                                        "reach":"",
-                                        "project":"",
-                                        "article":"",
-                                        "experience":"",
-                                        "fun":"",
-                                        })
-    const [active , setActive] = useState({"title": true ,
-                                        "subtitle":false ,
-                                        "work":false})
+    const[data , setData] = useData();
 
-    const [align , setAlign] = useState({"title": "left" , 
-                                        "subtitle":"left" , 
-                                        "work":"left"})
+    const titleGetter = (key) => {
+        if(key === "title" || key === "subtitle") return data[key]["title"]
+        else return data["work"][key]["title"]
+    }
+
+    const valueGetter = (key) => {
+        if(key === "title" || key === "subtitle") return data[key]["value"]
+        else return data["work"][key]["value"]
+    }
+
+    const alignGetter = (key) => {
+        return data[key]["align"] === "left" ? false : true
+    }
 
     // for checkboxes
     const onChechboxClicked = (event) =>{
-        const activeElement = event.target
-        const id = activeElement.value
-        let newValue = {...active , [id]: !(active[id])}
-        setActive(newValue)
+       const component = event.target.id.substring(9)
+       const newValue = !(data[component]["active"])
+       setData({...data , [component] : {...data[component] , "active":newValue}})
     }
 
     // for slign switches
     const onSwitchClicked = (event) =>{
-        const activeElement = event.target
-        const id = activeElement.value
-        const currentValue = align[id]
-        const chnageValue = (currentValue === "left" ? "center" : "left")
-        let newValue = {...align , [id]: chnageValue }
-        setAlign(newValue)
-    }
-    
-
-
-    // work field list
-    const workField = Object.keys(work)
-
-    // Markdown value designer
-    let addingValue = {
-        "title" : {
-            "left" : `# ${title} ${titleValue}`,
-            "center" : `# <p align ="center">${title} ${titleValue}</p>`
-        },
-        "subtitle" : {
-            "left" : `### ${subtitle}`,
-            "center" : `### <p align ="center">${subtitle}</p>`
-        },
-        ...Object.fromEntries(
-            workField.map(key =>[key , 
-                {
-                    "left" : `##### *${work[key]} ${workValue[key]}*`.replace(/\s*\**$/,'*'),
-                    "center" : `##### <p align ="center"><i>${work[key]} ${workValue[key]}</i></p>`
-                }
-            ])
-        )
+        const component = event.target.id.substring(7)
+        const newValue = (data[component]["align"]) === "left" ? "center" : "left"
+        setData({...data , [component] : {...data[component] , "align":newValue}})
     }
 
-    let settings = {
-        "title":  `${addingValue["title"][align["title"]]}`,
-        "subtitle": `${addingValue["subtitle"][align["subtitle"]]}`,
-        ...Object.fromEntries(
-            workField.map(key =>[key , `${addingValue[key][align["work"]]}`])
-        )
+    const updateTitleHelper = (key , value) => {
+        if(key === "title" || key === "subtitle") return {...data[key] , "title": value}
+        else return {...data["work"] , [key] : {...data["work"][key] ,  "title": value}}
     }
 
-    const idToValueHelper = (id , value , type) => {
-        let newValue = ""
-        workField.forEach(key =>{
-            if (id === key) {
-                if(type === 1){
-                    newValue = {...work , [key] : value}
-                    setWork(newValue)
-                } else{
-                    newValue = {...workValue , [key] : value}
-                    setWorkValue(newValue)
-                }
-            }
-        })
+    const updateValueHelper = (key , value) => {
+        if(key === "title" || key === "subtitle") return {...data[key] , "value": value}
+        else return {...data["work"] , [key] : {...data["work"][key] ,  "value": value}}
     }
 
-    const idToSetValue = (id , value) => {
-        if (id === "title") setTitle(value);
-        if (id === "subtitle") setSubtitle(value)
-        idToValueHelper(id , value , 1)
+    const setterHelper = (component) => {
+        const value = component.value
+        const key = component.id.substring(0 , 5) === "label" ? component.id.substring(6) : component.id
+        const mainKey = (key === "title" || key === "subtitle") ? key : "work"
+        return [value , key , mainKey]
     }
 
-    const idToSetUserValue = (id , value) => {
-        if(id === "title") setTitleValue(value)
-        idToValueHelper(id , value , 0)
+    // for values input
+    const valueSetter = (event) => {
+        const values = setterHelper(event.target)
+        const newValue = {...data , [values[2]] : updateValueHelper(values[1] , values[0])}
+        setData(newValue)
     }
 
-    const updateMarkdown = (event) => {
-        const value = event.target.value;
-        const id = event.target.id;
-        idToSetUserValue(id , value)
+    // for title input
+    const titleSetter = (event) => {
+        const values = setterHelper(event.target)
+        const newValue = {...data , [values[2]] : updateTitleHelper(values[1] , values[0])}
+        setData(newValue)
     }
-
-    const updateMarkdownFromLable = (event) =>{
-        const value = event.target.value;
-        const id = event.target.id.substring(6);
-        idToSetValue(id , value);
-    }
-
-    useEffect(() => {
-        let finalVal = ""
-        Object.keys(settings).forEach(element => {
-            let currentElemet = settings[element]
-            const defaulElement = [`##### <p align ="center"><i> </i></p>` , `##### * *` , `##### **`]
-            const prevElement = element
-            if (workField.includes(element)) element = "work"
-
-            if(active[element] && !defaulElement.includes(currentElemet)){
-                if(element === "title" || element === "subtitle"){
-                    finalVal += `<!--START_SECTION:${element.toUpperCase()}-->\n${currentElemet}\n<!--END_SECTION:${element.toUpperCase()}-->\n\n`
-                }else if (element === "work" && prevElement === "working"){
-                    finalVal += `<!--START_SECTION:${element.toUpperCase()}-->\n${currentElemet}`
-                }else if(element === "work" && prevElement === "fun"){
-                    finalVal += `\n${currentElemet}\n<!--END_SECTION:${element.toUpperCase()}-->\n\n`
-                }else{
-                    finalVal += `\n${currentElemet}`
-                }
-                
-            }
-        });
-        setMarkdown(finalVal)
-    })
-
     
     return (
         <React.Fragment>
             {/* Title - labal */}
-            <HeadingLabel additionalClass = "opacity-0" onChechboxClicked = {onChechboxClicked} title = "Title" onSwitchClicked = {onSwitchClicked}/>
+            <HeadingLabel disableState = {true} onChechboxClicked = {onChechboxClicked} title = "Title" 
+            onSwitchClicked = {onSwitchClicked} checkedstate = {true}  checkAlign = {alignGetter("title")}/>
             {/* title input values */}
             <div className="m-1 ms-5 row">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "Your intro" id="title" defaultValue = {title}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Name" id = "title"/>
+                <Input updates = {titleSetter} placeholder = "Your intro" id="label-title" defaultValue = {titleGetter("title")}/>
+                <Input updates = {valueSetter} placeholder = "Name" id = "title" defaultValue = {valueGetter("title")}/>
             </div>
 
             {/* Subtitle - labal */}
-            <HeadingLabel additionalClass = "" onChechboxClicked = {onChechboxClicked} title = "Subtitle" onSwitchClicked = {onSwitchClicked}/>
+            <HeadingLabel disableState = {false} onChechboxClicked = {onChechboxClicked} title = "Subtitle" 
+            onSwitchClicked = {onSwitchClicked} checkedstate = {data["subtitle"]["active"]} checkAlign = {alignGetter("subtitle")}/>
             {/* Subtitle input values */}
             <div className="m-1 ms-5 row">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "Your Subtitle" id="subtitle" defaultValue = {subtitle}/>
+                <Input updates = {titleSetter} placeholder = "Your Subtitle" id="label-subtitle" defaultValue = {titleGetter("subtitle")}/>
             </div>
 
             {/* Work - labal */}
-            <HeadingLabel additionalClass = "" onChechboxClicked = {onChechboxClicked} title = "Work" onSwitchClicked = {onSwitchClicked}/>
+            <HeadingLabel disableState = {false} onChechboxClicked = {onChechboxClicked} title = "Work" 
+            onSwitchClicked = {onSwitchClicked} checkedstate = {data["work"]["active"]} checkAlign = {alignGetter("work")}/>
             {/* Working input values */}
             <div className="m-1 ms-5 row">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "working" id="working" defaultValue = {work["working"]}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Project name or link" id = "working"/>
+                <Input updates = {titleSetter} placeholder = "working" id="label-working" defaultValue = {titleGetter("working")}/>
+                <Input updates = {valueSetter} placeholder = "Project name or link" id = "working" defaultValue = {valueGetter("working")}/>
             </div>
             {/* Collaborate input values */}
              <div className="m-1 ms-5 row mt-3">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "collaborate" id="collaborate" defaultValue = {work["collaborate"]}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Project name or link" id = "collaborate"/>
+                <Input updates = {titleSetter} placeholder = "collaborate" id="label-collaborate" defaultValue = {titleGetter("collaborate")}/>
+                <Input updates = {valueSetter} placeholder = "Project name or link" id = "collaborate" defaultValue = {valueGetter("collaborate")}/>
             </div>
             {/* Help input values */}
              <div className="m-1 ms-5 row mt-3">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "help" id="help" defaultValue = {work["help"]}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Project name or link" id = "help"/>
+                <Input updates = {titleSetter} placeholder = "help" id="label-help" defaultValue = {titleGetter("help")}/>
+                <Input updates = {valueSetter} placeholder = "Project name or link" id = "help" defaultValue = {valueGetter("help")}/>
             </div>
             {/* Learning input values */}
              <div className="m-1 ms-5 row mt-3">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "learning" id="learning" defaultValue = {work["learning"]}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Frameworks , Courses" id = "learning"/>
+                <Input updates = {titleSetter} placeholder = "learning" id="label-learning" defaultValue = {titleGetter("learning")}/>
+                <Input updates = {valueSetter} placeholder = "Frameworks , Courses" id = "learning" defaultValue = {valueGetter("learning")}/>
             </div>
             {/* About input values */}
              <div className="m-1 ms-5 row mt-3">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "about" id="about" defaultValue = {work["about"]}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Familiar technologies" id = "about"/>
+                <Input updates = {titleSetter} placeholder = "about" id="label-about" defaultValue = {titleGetter("about")}/>
+                <Input updates = {valueSetter} placeholder = "Familiar technologies" id = "about" defaultValue = {valueGetter("about")}/>
             </div>
             {/* Reach input values */}
              <div className="m-1 ms-5 row mt-3">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "reach" id="reach" defaultValue = {work["reach"]}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Email address" id = "reach"/>
+                <Input updates = {titleSetter} placeholder = "reach" id="label-reach" defaultValue = {titleGetter("reach")}/>
+                <Input updates = {valueSetter} placeholder = "Email address" id = "reach" defaultValue = {valueGetter("reach")}/>
             </div>
             {/* Project input values */}
              <div className="m-1 ms-5 row mt-3">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "project" id="project" defaultValue = {work["project"]}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Portfolio link" id = "project"/>
+                <Input updates = {titleSetter} placeholder = "project" id="label-project" defaultValue = {titleGetter("project")}/>
+                <Input updates = {valueSetter} placeholder = "Portfolio link" id = "project" defaultValue = {valueGetter("project")}/>
             </div>
             {/* Article input values */}
              <div className="m-1 ms-5 row mt-3">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "article" id="article" defaultValue = {work["article"]}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Blog link" id = "article"/>
+                <Input updates = {titleSetter} placeholder = "article" id="label-article" defaultValue = {titleGetter("article")}/>
+                <Input updates = {valueSetter} placeholder = "Blog link" id = "article" defaultValue = {valueGetter("article")}/>
             </div>
             {/* Experience input values */}
              <div className="m-1 ms-5 row mt-3">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "experience" id="experience" defaultValue = {work["experience"]}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Resume link" id = "experience"/>
+                <Input updates = {titleSetter} placeholder = "experience" id="label-experience" defaultValue = {titleGetter("experience")}/>
+                <Input updates = {valueSetter} placeholder = "Resume link" id = "experience" defaultValue = {valueGetter("experience")}/>
             </div>
             {/* Fun input values */}
              <div className="m-1 ms-5 row mt-3">
-                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "fun" id="fun" defaultValue = {work["fun"]}/>
-                <Input updateMarkdown = {updateMarkdown} placeholder = "Say something" id = "fun"/>
+                <Input updates = {titleSetter} placeholder = "fun" id="label-fun" defaultValue = {titleGetter("fun")}/>
+                <Input updates = {valueSetter} placeholder = "Say something" id = "fun" defaultValue = {valueGetter("fun")}/>
             </div>
         </React.Fragment>
     );
