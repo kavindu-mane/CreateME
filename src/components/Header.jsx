@@ -21,7 +21,7 @@ class Header extends Component {
                         {/* theme changer button */}
                         <button onClick={this.themeClick}
                         className="theme-btn p-1 ms-2 rounded-circle d-flex align-items-center bg-transparent border-0">
-                        <span class="material-symbols-outlined theme-icon"></span>
+                        <span className="material-symbols-outlined theme-icon"></span>
                         </button>
                     </div>
                 </div>

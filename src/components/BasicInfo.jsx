@@ -1,6 +1,9 @@
 import React , {useState , useEffect} from 'react';
 import {useMarkdown} from "./MarkDownProvider";
+import Input from "./Input"
 import "../resources/styles.css"
+import InputLabel from './InputLabel';
+import HeadingLabel from './HeadingLabel';
 
 const BasicInfo = ()  => {
 
@@ -33,19 +36,35 @@ const BasicInfo = ()  => {
     const [active , setActive] = useState({"title": true ,
                                         "subtitle":false ,
                                         "work":false})
-    const [align , setAlign] = useState({"title": "center" , 
+
+    const [align , setAlign] = useState({"title": "left" , 
                                         "subtitle":"left" , 
                                         "work":"left"})
 
+    // for checkboxes
     const onChechboxClicked = (event) =>{
         const activeElement = event.target
         const id = activeElement.value
-        let newValue = ""
-        if(id === "subtitle") newValue = {...active , "subtitle" : !(active["subtitle"])}
-        if(id === "work") newValue = {...active , "work" : !(active["work"])}
+        let newValue = {...active , [id]: !(active[id])}
         setActive(newValue)
     }
 
+    // for slign switches
+    const onSwitchClicked = (event) =>{
+        const activeElement = event.target
+        const id = activeElement.value
+        const currentValue = align[id]
+        const chnageValue = (currentValue === "left" ? "center" : "left")
+        let newValue = {...align , [id]: chnageValue }
+        setAlign(newValue)
+    }
+    
+
+
+    // work field list
+    const workField = Object.keys(work)
+
+    // Markdown value designer
     let addingValue = {
         "title" : {
             "left" : `# ${title} ${titleValue}`,
@@ -55,33 +74,48 @@ const BasicInfo = ()  => {
             "left" : `### ${subtitle}`,
             "center" : `### <p align ="center">${subtitle}</p>`
         },
-        "working" : {
-            "left" : `##### *${work["working"]} ${workValue["working"]}*`.replace(/\s\**$/,'*'),
-            "center" : `##### <p align ="center"><i>${work["working"]} ${workValue["working"]}</i></p>`
-        }
+        ...Object.fromEntries(
+            workField.map(key =>[key , 
+                {
+                    "left" : `##### *${work[key]} ${workValue[key]}*`.replace(/\s*\**$/,'*'),
+                    "center" : `##### <p align ="center"><i>${work[key]} ${workValue[key]}</i></p>`
+                }
+            ])
+        )
     }
 
     let settings = {
         "title":  `${addingValue["title"][align["title"]]}`,
         "subtitle": `${addingValue["subtitle"][align["subtitle"]]}`,
-        "working": `${addingValue["working"][align["work"]]}`,
+        ...Object.fromEntries(
+            workField.map(key =>[key , `${addingValue[key][align["work"]]}`])
+        )
+    }
+
+    const idToValueHelper = (id , value , type) => {
+        let newValue = ""
+        workField.forEach(key =>{
+            if (id === key) {
+                if(type === 1){
+                    newValue = {...work , [key] : value}
+                    setWork(newValue)
+                } else{
+                    newValue = {...workValue , [key] : value}
+                    setWorkValue(newValue)
+                }
+            }
+        })
     }
 
     const idToSetValue = (id , value) => {
-        let newValue = ""
         if (id === "title") setTitle(value);
         if (id === "subtitle") setSubtitle(value)
-        if(id === "working") newValue = {...work , "working" : value}
-
-        if (["working"].includes(id)) setWork(newValue)
+        idToValueHelper(id , value , 1)
     }
 
     const idToSetUserValue = (id , value) => {
-        let newValue = ""
         if(id === "title") setTitleValue(value)
-        if(id === "working") newValue = {...workValue , "working" : value}
-
-        if (["working"].includes(id)) setWorkValue(newValue)
+        idToValueHelper(id , value , 0)
     }
 
     const updateMarkdown = (event) => {
@@ -101,120 +135,94 @@ const BasicInfo = ()  => {
         Object.keys(settings).forEach(element => {
             let currentElemet = settings[element]
             const defaulElement = [`##### <p align ="center"><i> </i></p>` , `##### * *` , `##### **`]
-            if (["working"].includes(element)) element = "work"
+            const prevElement = element
+            if (workField.includes(element)) element = "work"
 
             if(active[element] && !defaulElement.includes(currentElemet)){
-                finalVal += "\n" + currentElemet
+                if(element === "title" || element === "subtitle"){
+                    finalVal += `<!--START_SECTION:${element.toUpperCase()}-->\n${currentElemet}\n<!--END_SECTION:${element.toUpperCase()}-->\n\n`
+                }else if (element === "work" && prevElement === "working"){
+                    finalVal += `<!--START_SECTION:${element.toUpperCase()}-->\n${currentElemet}`
+                }else if(element === "work" && prevElement === "fun"){
+                    finalVal += `\n${currentElemet}\n<!--END_SECTION:${element.toUpperCase()}-->\n\n`
+                }else{
+                    finalVal += `\n${currentElemet}`
+                }
+                
             }
         });
         setMarkdown(finalVal)
-        // console.log(work)
     })
 
     
     return (
         <React.Fragment>
             {/* Title - labal */}
-            <div className='d-flex ps-1 py-3 d-flex align-items-center'>
-                <input type={"checkbox"} id={"title-checkbox"} value="title" onChange={onChechboxClicked}
-                className="form-check-input m-0 opacity-0"/>
-                <h3 className='ps-3 m-0 f-raleway fw-light'>Title</h3>
-            </div>
+            <HeadingLabel additionalClass = "opacity-0" onChechboxClicked = {onChechboxClicked} title = "Title" onSwitchClicked = {onSwitchClicked}/>
             {/* title input values */}
-            <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="Your intro" defaultValue={title} 
-                aria-label="title" id = "lable-title" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Name" 
-                aria-label="title" id='title' onChange = {updateMarkdown}/>
+            <div className="m-1 ms-5 row">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "Your intro" id="title" defaultValue = {title}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Name" id = "title"/>
             </div>
 
             {/* Subtitle - labal */}
-            <div className='d-flex ps-1 py-3 d-flex align-items-center'>
-                <input type={"checkbox"} id={"subtitle-checkbox"} value="subtitle" onChange={onChechboxClicked}
-                className="form-check-input m-0"/>
-                <h3 className='ps-3 m-0 f-raleway fw-light'>Subtitle</h3>
-            </div>
+            <HeadingLabel additionalClass = "" onChechboxClicked = {onChechboxClicked} title = "Subtitle" onSwitchClicked = {onSwitchClicked}/>
             {/* Subtitle input values */}
-            <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="Your Subtitle" defaultValue={subtitle} 
-                aria-label="subtitle" id = "lable-subtitle" onChange={updateMarkdownFromLable}/>
+            <div className="m-1 ms-5 row">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "Your Subtitle" id="subtitle" defaultValue = {subtitle}/>
             </div>
 
             {/* Work - labal */}
-            <div className='d-flex ps-1 py-3 d-flex align-items-center'>
-                <input type={"checkbox"} id={"work-checkbox"} value="work" onChange={onChechboxClicked}
-                className="form-check-input m-0"/>
-                <h3 className='ps-3 m-0 f-raleway fw-light'>Work</h3>
-            </div>
+            <HeadingLabel additionalClass = "" onChechboxClicked = {onChechboxClicked} title = "Work" onSwitchClicked = {onSwitchClicked}/>
             {/* Working input values */}
-            <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="Working" defaultValue={work["working"]} 
-                aria-label="working" id = "lable-working" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Project name or link" 
-                aria-label="working" id='working' onChange = {updateMarkdown}/>
+            <div className="m-1 ms-5 row">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "working" id="working" defaultValue = {work["working"]}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Project name or link" id = "working"/>
             </div>
-             {/* Collaborate input values */}
-             <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="collaborate" defaultValue={work["collaborate"]} 
-                aria-label="collaborate" id = "lable-collaborate" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Project name or link" 
-                aria-label="collaborate" id='collaborate' onChange = {updateMarkdown}/>
+            {/* Collaborate input values */}
+             <div className="m-1 ms-5 row mt-3">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "collaborate" id="collaborate" defaultValue = {work["collaborate"]}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Project name or link" id = "collaborate"/>
             </div>
-             {/* Help input values */}
-             <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="help" defaultValue={work["help"]} 
-                aria-label="help" id = "lable-help" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Project name or link" 
-                aria-label="help" id='help' onChange = {updateMarkdown}/>
+            {/* Help input values */}
+             <div className="m-1 ms-5 row mt-3">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "help" id="help" defaultValue = {work["help"]}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Project name or link" id = "help"/>
             </div>
-             {/* Learning input values */}
-             <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="learning" defaultValue={work["learning"]} 
-                aria-label="learning" id = "lable-learning" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Frameworks , Courses" 
-                aria-label="learning" id='learning' onChange = {updateMarkdown}/>
+            {/* Learning input values */}
+             <div className="m-1 ms-5 row mt-3">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "learning" id="learning" defaultValue = {work["learning"]}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Frameworks , Courses" id = "learning"/>
             </div>
-             {/* About input values */}
-             <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="about" defaultValue={work["about"]} 
-                aria-label="about" id = "lable-about" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Familiar technologies" 
-                aria-label="about" id='about' onChange = {updateMarkdown}/>
+            {/* About input values */}
+             <div className="m-1 ms-5 row mt-3">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "about" id="about" defaultValue = {work["about"]}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Familiar technologies" id = "about"/>
             </div>
-             {/* Reach input values */}
-             <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="reach" defaultValue={work["reach"]} 
-                aria-label="reach" id = "lable-reach" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Email address" 
-                aria-label="reach" id='reach' onChange = {updateMarkdown}/>
+            {/* Reach input values */}
+             <div className="m-1 ms-5 row mt-3">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "reach" id="reach" defaultValue = {work["reach"]}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Email address" id = "reach"/>
             </div>
-             {/* Project input values */}
-             <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="project" defaultValue={work["project"]} 
-                aria-label="project" id = "lable-project" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Portfolio link" 
-                aria-label="project" id='project' onChange = {updateMarkdown}/>
+            {/* Project input values */}
+             <div className="m-1 ms-5 row mt-3">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "project" id="project" defaultValue = {work["project"]}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Portfolio link" id = "project"/>
             </div>
-             {/* Article input values */}
-             <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="article" defaultValue={work["article"]} 
-                aria-label="article" id = "lable-article" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Blog link" 
-                aria-label="article" id='article' onChange = {updateMarkdown}/>
+            {/* Article input values */}
+             <div className="m-1 ms-5 row mt-3">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "article" id="article" defaultValue = {work["article"]}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Blog link" id = "article"/>
             </div>
-             {/* Experience input values */}
-             <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="experience" defaultValue={work["experience"]} 
-                aria-label="experience" id = "lable-experience" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Resume link" 
-                aria-label="experience" id='experience' onChange = {updateMarkdown}/>
+            {/* Experience input values */}
+             <div className="m-1 ms-5 row mt-3">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "experience" id="experience" defaultValue = {work["experience"]}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Resume link" id = "experience"/>
             </div>
-             {/* Fun input values */}
-             <div class="m-1 ms-5 row">
-                <input type="text" class="form-control my-1" placeholder="fun" defaultValue={work["fun"]} 
-                aria-label="fun" id = "lable-fun" onChange={updateMarkdownFromLable}/>
-                <input type="text" class="form-control my-1" placeholder="Say something" 
-                aria-label="fun" id='fun' onChange = {updateMarkdown}/>
+            {/* Fun input values */}
+             <div className="m-1 ms-5 row mt-3">
+                <InputLabel updateMarkdownFromLable = {updateMarkdownFromLable} placeholder = "fun" id="fun" defaultValue = {work["fun"]}/>
+                <Input updateMarkdown = {updateMarkdown} placeholder = "Say something" id = "fun"/>
             </div>
         </React.Fragment>
     );

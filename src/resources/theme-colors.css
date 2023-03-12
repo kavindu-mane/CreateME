@@ -1,9 +1,11 @@
 .dark-theme{
     --shadow-color:#0c3f9e42;
     --background-color:#1A1A2E;
+    --background-secondary-color:#1d1f2b;
     --link-color:#fcfcfc;
     --link-hover-background:#bfcbff15;
     --root-color:#101220;
+    --move-btn-bg:#383a44;
     --root-font:#fff;
     --switch-theme:"light_mode";
     --icon-filter:0.85;
@@ -15,9 +17,11 @@
 .light-theme{
     --shadow-color:#b3b1b149;
     --background-color:#fcfcfc;
+    --background-secondary-color:#d3f8df;
     --link-color:#1C3879;
     --link-hover-background:#bfcbff55;
     --root-color:#fefefe;
+    --move-btn-bg:#1a2720;
     --root-font:#091e2b;
     --switch-theme:"dark_mode";
     --icon-filter:0;

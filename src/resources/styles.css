@@ -122,7 +122,25 @@
 
 .custom-tooltip {
     width:fit-content !important;
-  }
+}
+
+.create{
+    background-color: var(--background-secondary-color);
+    color: var(--root-font);
+}
+
+.create input[type = "text"] ,textarea{
+    background-color: var(--root-color) ;
+    color: var(--root-font);
+}
+
+.create label{
+    color: var(--root-font);
+}
+
+.move-btn-bg{
+    background-color: var(--move-btn-bg);
+}
 
 @media (min-width:768px) {
     .intro{

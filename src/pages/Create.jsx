@@ -6,16 +6,17 @@ import "../resources/styles.css"
 
 class Create extends Component {
     render() {
+        const commonClass = "col-lg-6 pb-3 border border-2 border-2 border-secondary rounded create"
         return (
             <React.Fragment>
                 <MarkDownProvider>
-                    <div className="container-fluid mt-5 row mx-0 px-4">
-                        <diw className="col-lg-6 px-3 mt-5 bg-primary rounded">
+                    <div className="container-fluid my-5 row mx-0 px-4">
+                        <div className={"mt-5 px-3  " + commonClass}>
                             <Dashboard/>
-                        </diw>
-                        <diw className="col-lg-6 px-3 mt-5 bg-secondary rounded">
+                        </div>
+                        <div className={"p-0 mt-3 mt-lg-5 " + commonClass}>
                             <Demo/>
-                        </diw>
+                        </div>
                     </div>
                 </MarkDownProvider>
             </React.Fragment>
