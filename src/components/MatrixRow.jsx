@@ -14,7 +14,7 @@ class MatrixRow extends Component {
             icon_2 = link +  icon_2 + "/" + icon_2 + "-original.svg"
             icon_3 = link +  icon_3 + "/" + icon_3 + "-original.svg"
             icon_4 = link +  icon_4 + "/" + icon_4 + "-original.svg"
-        }else{<facebook />
+        }else{
             const link = "https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/"
             icon_1 = link + icon_1 + ".svg"
             icon_2 = link + icon_2 + ".svg"

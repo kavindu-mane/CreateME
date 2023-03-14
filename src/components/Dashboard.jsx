@@ -24,8 +24,8 @@ const Dashboard = () => {
         setNextActive(nextActive - 1)
     }
 
-    const field = Object.keys(data)
-    const workField = Object.keys(data["work"]).slice(0,10)
+    // get only title , subtitle and work
+    const field = Object.keys(data).slice(0,3)
 
     useEffect(() => {
         setBackBtnState(nextActive === 1 ? true : false)
@@ -38,27 +38,25 @@ const Dashboard = () => {
             const endComment = `<!--END_SECTION:${element.toUpperCase()}-->\n\n`
             const active = data[element]["active"]
             const align = data[element]["align"]
+            const value = data[element]["value"]
 
-            if(element === "work" && active){
+            if(active){
                 finalMd += startComment
-
-                workField.forEach(el => {
-                    const title = data[element][el]["title"]
-                    const value = data[element][el]["value"]
-                    finalMd += `##### <p align = ${align}><i>${title} ${value}</i></p>\n`
+                value.split("\n").forEach(line => {
+                    const mdFormats = {
+                                        "title" :`# <p align = ${align}>${line}</p>\n`,
+                                        "subtitle" : `#### <p align = ${align}>${line}</p>\n`,
+                                        "work":`##### <p align = ${align}><i>${line}</i></p>\n`
+                                        }
+                    finalMd += mdFormats[element]
                 });
-
                 finalMd += endComment
-            }else if(active){
-                const title = data[element]["title"]
-                const value = data[element]["value"]
-                const hashes = element === "title" ? "#" : "####"
-                finalMd += `${startComment}  ${hashes} <p align = ${align}>${title} ${value}</p>\n ${endComment}`
             }
+            
         });
 
         setMarkdown(finalMd)
-    }, [nextActive, field, setMarkdown, data, workField]);
+    }, [nextActive, field, setMarkdown, data]);
 
     const backBtnClasses = 'btn fw-bold text-secondary mt-3 bg-transparent border-0 d-flex justify-content-center'
 

@@ -129,7 +129,7 @@
     color: var(--root-font);
 }
 
-.create input[type = "text"] ,textarea{
+.create input[type = "text"] , .create textarea , .create textarea:focus{
     background-color: var(--root-color) ;
     color: var(--root-font);
 }
@@ -140,6 +140,18 @@
 
 .move-btn-bg{
     background-color: var(--move-btn-bg);
+}
+
+.skill-btn-bg , .skill-btn-bg:hover{
+    background-color: var(--skill-btn-bg);
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+    padding: 0;
+    color: var(--root-color);
+}
+
+.skill-btn-bg img , .skill-btn-bg span{
+    padding: 2.5px 0;
 }
 
 @media (min-width:768px) {
