@@ -88,8 +88,8 @@ const DataProvider = ({children}) => {
                         ["zig" , false , returnOriginalIcon("zig") ],
                         ["objective c" , false , returnPlainIcon("objectivec") ],
                         ["rust" , false , returnPlainIcon("rust") ],
-                        ["nim" , false , returnVectorLogo("nim-lang") ],  ///
-                        ["octave" , false , returnWorldVectorLogo("gnu_octave") ],  ///
+                        ["nim" , false , returnVectorLogo("nim-lang") ],  
+                        ["octave" , false , "https://upload.wikimedia.org/wikipedia/commons/6/6a/Gnu-octave-logo.svg" ],  
                         
                         ["vuejs" , false , returnOriginalIcon("vuejs") ], // frontend development
                         ["react" , false , returnOriginalIcon("react") ],
@@ -108,10 +108,10 @@ const DataProvider = ({children}) => {
                         ["ember" , false , returnOriginalWordmarkIcon("ember") ],
                         ["angular" , false , returnOriginalIcon("angularjs") ],
                         ["pug" , false , returnWorldVectorLogo("pug") ],
-                        ["materialize" , false , returnVectorLogo("materialize") ],
+                        ["materialize" , false , "https://raw.githubusercontent.com/prplx/svg-logos/5585531d45d294869c4eaab4d7cf2e9c167710a9/svg/materialize.svg" ],
                         ["bulma" , false , returnPlainIcon("bulma") ],
-                        ["gtk" , false , returnVectorLogo("gtk") ],
-                        ["wxwidgets" , false , returnWorldVectorLogo("wx_widgets") ],
+                        ["gtk" , false , "https://upload.wikimedia.org/wikipedia/commons/7/71/GTK_logo.svg" ],
+                        ["wxwidgets" , false , "https://upload.wikimedia.org/wikipedia/commons/b/bb/WxWidgets.svg" ],
                         
                         ["nodejs" , false , returnOriginalIcon("nodejs") ], // backend development
                         ["spring" , false , returnOriginalIcon("spring") ],
@@ -123,7 +123,7 @@ const DataProvider = ({children}) => {
                         ["solr" , false , returnWorldVectorLogo("solr") ],
                         ["rabbitmq" , false , returnWorldVectorLogo("rabbitmq") ],
                         ["hadoop" , false , returnWorldVectorLogo("hadoop") ],
-                        ["openresty" , false , returnVectorLogo("openresty") ],
+                        ["openresty" , false , "https://openresty.org/images/logo.png" ],
                         
                         ["android" , false , returnOriginalIcon("android") ], // mobile app development
                         ["flutter" , false , returnOriginalIcon("flutter") ],
@@ -137,8 +137,8 @@ const DataProvider = ({children}) => {
                         ["pytorch" , false , returnOriginalIcon("pytorch") ],
                         ["pandas" , false , returnOriginalIcon("pandas") ],
                         ["opencv" , false , returnOriginalIcon("opencv") ],
-                        ["seaborn" , false , returnVectorLogo("seaborn") ],
-                        ["scikit" , false , returnVectorLogo("scikit") ],
+                        ["seaborn" , false , "https://seaborn.pydata.org/_images/logo-mark-lightbg.svg" ],
+                        ["scikit" , false , "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" ],
                         
                         ["mongodb" , false , returnOriginalIcon("mongodb") ], // database
                         ["mysql" , false , returnOriginalIcon("mysql") ],
@@ -148,17 +148,17 @@ const DataProvider = ({children}) => {
                         ["couchdb" , false , returnOriginalIcon("couchdb") ],
                         ["sqlite" , false , returnOriginalIcon("sqlite") ],
                         ["cassandra" , false , returnWorldVectorLogo("cassandra") ],
-                        ["hive" , false , returnWorldVectorLogo("hive") ],
-                        ["realm" , false , returnWorldVectorLogo("realm") ],
+                        ["hive" , false , "https://www.vectorlogo.zone/logos/apache_hive/apache_hive-icon.svg" ],
+                        ["realm" , false , "https://raw.githubusercontent.com/bestofjs/bestofjs-webui/8665e8c267a0215f3159df28b33c365198101df5/public/logos/realm.svg" ],
                         ["mariadb" , false , returnWorldVectorLogo("mariadb") ],
                         ["cockroachdb" , false , returnWorldVectorLogo("cockroachdb") ],
                         ["elasticsearch" , false , returnWorldVectorLogo("elasticsearch") ],
-                        ["mssql" , false , returnVectorLogo("ms-sql") ],
+                        ["mssql" , false , "https://www.svgrepo.com/show/303229/microsoft-sql-server-logo.svg" ],
                         
                         ["d3js" , false , returnOriginalIcon("d3js") ], // data visualization
                         ["grafana" , false , returnOriginalIcon("grafana") ],
-                        ["chartjs" , false , returnVectorLogo("chartjs") ],
-                        ["canvasjs" , false , returnVectorLogo("canvasjs") ],
+                        ["chartjs" , false , "https://www.chartjs.org/media/logo-title.svg" ],
+                        ["canvasjs" , false , "https://raw.githubusercontent.com/Hardik0307/Hardik0307/master/assets/canvasjs-charts.svg" ],
                         ["kibana" , false , returnVectorLogo("elasticco_kibana") ],
                         
                         ["docker" , false , returnOriginalIcon("docker") ], //  devops
@@ -180,14 +180,14 @@ const DataProvider = ({children}) => {
                         ["codeigniter" , false , returnPlainIcon("codeigniter") ],
                         ["rails" , false , returnPlainIcon("rails") ], //plain
                         ["flask" , false , returnOriginalIcon("flask") ],
-                        ["quasar" , false , returnVectorLogo("quasar") ],
+                        ["quasar" , false , "https://cdn.quasar.dev/logo/svg/quasar-logo.svg" ],
                         
                         ["firebase" , false , returnPlainIcon("firebase") ], // baas
                         ["appwrite" , false , returnOriginalIcon("appwrite") ],
-                        ["amplify" , false , returnVectorLogo("amplify") ],
+                        ["amplify" , false , "https://docs.amplify.aws/assets/logo-dark.svg" ],
                         ["heroku" , false , returnPlainIcon("heroku") ],
                         
-                        ["cypress" , false , returnVectorLogo("cypress") ], //testing
+                        ["cypress" , false , "https://raw.githubusercontent.com/simple-icons/simple-icons/6e46ec1fc23b60c8fd0d2f2ff46db82e16dbd75f/icons/cypress.svg" ], //testing
                         ["selenium" , false , returnOriginalIcon("selenium") ],
                         ["jest" , false , returnPlainIcon("jest") ],
                         ["mocha" , false , returnPlainIcon("mocha") ],
@@ -201,11 +201,11 @@ const DataProvider = ({children}) => {
                         ["jekyll" , false , returnWorldVectorLogo("jekyll") ],
                         ["nextjs" , false , returnOriginalIcon("nextjs") ],
                         ["nuxtjs" , false , returnOriginalIcon("nuxtjs") ],
-                        ["11ty" , false , returnVectorLogo("11ty") ],
-                        ["scully" , false , returnVectorLogo("scully") ],
-                        ["sculpin" , false , returnVectorLogo("sculpin") ],
-                        ["sapper" , false , returnVectorLogo("sapper") ],
-                        ["vuepress" , false , returnVectorLogo("vuepress") ],
+                        ["11ty" , false , "https://gist.githubusercontent.com/vivek32ta/c7f7bf583c1fb1c58d89301ea40f37fd/raw/f4c85cce5790758286b8f155ef9a177710b995df/11ty.svg" ],
+                        ["scully" , false , "https://raw.githubusercontent.com/scullyio/scully/main/assets/logos/SVG/scullyio-icon.svg" ],
+                        ["sculpin" , false , "https://gist.githubusercontent.com/vivek32ta/c7f7bf583c1fb1c58d89301ea40f37fd/raw/1782aef8672484698c0dd407f900c4a329ed5bc4/sculpin.svg" ],
+                        ["sapper" , false , "https://raw.githubusercontent.com/bestofjs/bestofjs-webui/master/public/logos/sapper.svg" ],
+                        ["vuepress" , false , "https://raw.githubusercontent.com/AliasIO/wappalyzer/master/src/drivers/webextension/images/icons/VuePress.svg" ],
                         ["hexo" , false , returnWorldVectorLogo("hexo") ],
                         ["middleman" , false , returnWorldVectorLogo("middleman") ],
                         ["docusaurus" , false , returnVectorLogo("docusaurus") ],
