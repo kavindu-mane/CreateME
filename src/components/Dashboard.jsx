@@ -54,14 +54,15 @@ const Dashboard = () => {
             }
         });
 
-        if(data["skill"]["active"]){
+        if(!data["skill"]["active"]){
             const align = data["skill"]["align"]
             finalMd += `<!--START_SECTION:SKILL-->\n`
             finalMd += `### <p align = ${align}> ${data["skill"]["title"]} </p>\n`
             finalMd += `<div align = ${align}>\n`
-            data["skill"]["value"].map((a , i) => {
-                if(a[1]) finalMd += `<img src="https://img.shields.io/badge/${a[0]}-%230175C2.svg?style=flat&logo=${a[0]}&logoColor=white" alt=${a[0]} /> 
-                &ensp;\n`.replace("#" , "%23").replace("#" , "-sharp")
+
+            data["skill"]["value"].forEach(e => {
+                if(!e[1]) finalMd += `<img src="https://img.shields.io/badge/${e[0]}-%23${e[3]}.svg?style=flat&logo=${e[0]}&logoColor=white" alt=${e[0]} /> 
+                &ensp;\n`.replace("#" , "%23").replace("#" , "-sharp").replaceAll("+" , "plus")
             })
             finalMd += `</div>\n<!--END_SECTION:SKILL-->\n\n`
         }
