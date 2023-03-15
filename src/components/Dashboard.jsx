@@ -52,8 +52,19 @@ const Dashboard = () => {
                 });
                 finalMd += endComment
             }
-            
         });
+
+        if(data["skill"]["active"]){
+            const align = data["skill"]["align"]
+            finalMd += `<!--START_SECTION:SKILL-->\n`
+            finalMd += `### <p align = ${align}> ${data["skill"]["title"]} </p>\n`
+            finalMd += `<div align = ${align}>\n`
+            data["skill"]["value"].map((a , i) => {
+                if(a[1]) finalMd += `<img src="https://img.shields.io/badge/${a[0]}-%230175C2.svg?style=flat&logo=${a[0]}&logoColor=white" alt=${a[0]} /> 
+                &ensp;\n`.replace("#" , "%23").replace("#" , "-sharp")
+            })
+            finalMd += `</div>\n<!--END_SECTION:SKILL-->\n\n`
+        }
 
         setMarkdown(finalMd)
     }, [nextActive, field, setMarkdown, data]);

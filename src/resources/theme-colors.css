@@ -8,6 +8,7 @@
     --move-btn-bg:#383a44;
     --root-font:#fff;
     --skill-btn-bg:#99ebc3;
+    --skill-btn-bg-added:#34a3e4;
     --switch-theme:"light_mode";
     --icon-filter:0.85;
     --example-img-filter:0;
@@ -25,6 +26,7 @@
     --move-btn-bg:#1a2720;
     --root-font:#091e2b;
     --skill-btn-bg:#6199be;
+    --skill-btn-bg-added:#4bd838;
     --switch-theme:"dark_mode";
     --icon-filter:0;
     --example-img-filter:0.05;

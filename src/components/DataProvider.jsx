@@ -54,6 +54,7 @@ const DataProvider = ({children}) => {
                 "align":"left"
         },
         "skill":{
+                "title":"🖥️ Tech Stack",
                 "value":[["groovy" , false , returnOriginalIcon("groovy")], // languages
                         ["c" , false , returnOriginalIcon("c")],
                         ["c++" , false , returnOriginalIcon("cplusplus")],
@@ -178,7 +179,7 @@ const DataProvider = ({children}) => {
                         ["symfony" , false , returnOriginalWordmarkIcon("symfony") ],
                         ["laravel" , false , returnVectorLogo("laravel") ],
                         ["codeigniter" , false , returnPlainIcon("codeigniter") ],
-                        ["rails" , false , returnPlainIcon("rails") ], //plain
+                        ["rails" , false , returnPlainIcon("rails") ], 
                         ["flask" , false , returnOriginalIcon("flask") ],
                         ["quasar" , false , "https://cdn.quasar.dev/logo/svg/quasar-logo.svg" ],
                         
