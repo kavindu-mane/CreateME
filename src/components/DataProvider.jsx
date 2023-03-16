@@ -234,6 +234,36 @@ const DataProvider = ({children}) => {
                 "active":false,
                 "align":"left",
                 "logo-type":"Flat"
+        },
+        "social":{
+                "title":"🌏 Connect with me",
+                "value":{
+                        "facebook":[],
+                        "instagram":[],
+                        "twitter":[],
+                        "linkedin":[],
+                        "reddit":[],
+                        "discord":[],
+                        "github":[],
+                        "youtube":[],
+                        "stack overflow":[],
+                        "quora":[],
+                        "hackerrank":[],
+                        "hackerearth":[],
+                        "medium":[],
+                        "keggle":[],
+                        "codepen":[],
+                        "leetcode":[],
+                        "dribbble":[],
+                        "pinterest":[],
+                        "tiktok":[],
+                        "twitch":[],
+                        "behance":[],
+                        "dev.to":[]
+                },
+                "active":false,
+                "align":"left",
+                "logo-type":"flat"
         }
 
     });

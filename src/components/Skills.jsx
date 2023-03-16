@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import HeadingLabel from './HeadingLabel';
 import "../resources/styles.css"
 import AddSkillButton from './AddSkillButton';
@@ -50,10 +50,6 @@ const Skills = () => {
         const newValue =  event.target.textContent      
         setData({...data , "skill" : {...data["skill"] , "logo-type" : newValue}})
     }
-
-    useEffect(() => {
-        console.log(data)
-    })
 
     return ( 
         <React.Fragment>

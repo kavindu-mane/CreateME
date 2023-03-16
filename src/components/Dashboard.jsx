@@ -3,9 +3,10 @@ import BasicInfo from './BasicInfo';
 import Skills from './Skills';
 import { useData } from './DataProvider';
 import { useMarkdown } from './MarkDownProvider';
+import SocialMedia from './SocialMedia';
 
 const Dashboard = () => {
-    const[element , setElement] = useState(<Skills/>) // BasicInfo
+    const[element , setElement] = useState(<SocialMedia/>) // BasicInfo
     const[nextActive , setNextActive] = useState(1)
     const[backBtnState , setBackBtnState] = useState(true)
     const[backBtnOpacity , setBackBtnOpacity] = useState("")
