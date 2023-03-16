@@ -168,6 +168,20 @@
     padding: 2.5px 0;
 }
 
+.dropdown ul , .dropdown li{
+    background-color: var(--root-color);
+    color: var(--root-font);
+    cursor: pointer;
+}
+
+.dropdown li{
+    border: 0.3px var(--background-secondary-color) solid;
+}
+
+.dropdown button{
+    color: var(--root-font);
+}
+
 @media (min-width:768px) {
     .intro{
         font-size: 3.5rem;
