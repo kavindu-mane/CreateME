@@ -1,8 +1,8 @@
-import Header from "./components/Header";
+import Header from "./components/HeadeNFooter/Header";
 import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Error from "./pages/Error";
-import Footer from "./components/Footer";
+import Footer from "./components/HeadeNFooter/Footer";
 import React from "react";
 import { BrowserRouter as Router , Routes , Route } from "react-router-dom";
 

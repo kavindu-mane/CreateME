@@ -1,5 +1,4 @@
 import React from 'react'
-import "../resources/styles.css"
 
 const AddSkillButton = ({icon , availability , link , index , buttonClick}) => {
     let sign = availability ? "close" : "add"

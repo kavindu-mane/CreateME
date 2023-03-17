@@ -1,6 +1,6 @@
 import React , {Component}from 'react'
-import '../resources/styles.css'
 import errorImage from './../resources/error.svg'
+import '../resources/styles.css'
 
 class Error extends Component {
    

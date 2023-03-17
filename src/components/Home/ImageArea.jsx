@@ -1,7 +1,6 @@
 import React , {Component} from "react";
-import "../resources/styles.css";
-import StatImage from "../resources/stats.svg";
-import ExampleImage from "../resources/example.png"
+import StatImage from "../../resources/stats.svg";
+import ExampleImage from "../../resources/example.png"
 
 class ImageArea extends Component {
     render() { 

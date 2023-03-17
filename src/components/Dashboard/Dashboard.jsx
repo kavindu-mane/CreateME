@@ -1,9 +1,9 @@
 import React, { useState , useEffect} from 'react';
-import BasicInfo from './BasicInfo';
-import Skills from './Skills';
-import { useData } from './DataProvider';
-import { useMarkdown } from './MarkDownProvider';
-import SocialMedia from './SocialMedia';
+import BasicInfo from '../BasicInfo/BasicInfo';
+import Skills from '../Skills/Skills';
+import { useData } from '../Providers/DataProvider';
+import { useMarkdown } from '../Providers/MarkDownProvider';
+import SocialMedia from '../Social/SocialMedia';
 
 const Dashboard = () => {
     const[element , setElement] = useState(<SocialMedia/>) // BasicInfo
@@ -34,6 +34,7 @@ const Dashboard = () => {
 
         // markdown text creation
         let finalMd = ""
+        // basic info data add to preview
         field.forEach(element => {
             const startComment = `<!--START_SECTION:${element.toUpperCase()}-->\n`
             const endComment = `<!--END_SECTION:${element.toUpperCase()}-->\n\n`
@@ -55,6 +56,7 @@ const Dashboard = () => {
             }
         });
 
+        // skill data add to preview
         if(data["skill"]["active"]){
             const align = data["skill"]["align"]
             const logoType = data["skill"]["logo-type"].replaceAll(" " , "-").toLowerCase()
@@ -64,7 +66,7 @@ const Dashboard = () => {
 
             data["skill"]["value"].forEach(e => {
                 if(e[1]) finalMd += `<img src="https://img.shields.io/badge/${e[0]}-%23${e[3]}.svg?style=${logoType}&logo=${e[0]}&logoColor=white" alt=${e[0]} /> 
-                &ensp;\n`.replace("#" , "%23").replace("#" , "-sharp").replaceAll("+" , "plus")
+                &ensp;\n`.replace("#" , "%23").replace("#" , "-sharp").replace("++&" , "plusplus&")
             })
             finalMd += `</div>\n<!--END_SECTION:SKILL-->\n\n`
         }

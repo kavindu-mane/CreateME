@@ -1,7 +1,7 @@
 import React ,{ Component } from "react";
-import  "../resources/styles.css"
-import Buttons from "./Buttons";
-import ToolTip from "./ToolTip";
+import Buttons from "../Common/Buttons";
+import ToolTip from "../Common/ToolTip";
+import  "../../resources/styles.css"
 
 class Header extends Component {
     render() { 

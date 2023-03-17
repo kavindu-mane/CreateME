@@ -1,6 +1,5 @@
 import React , {Component} from 'react';
 import ReactTooltip from 'react-tooltip';
-import "../resources/styles.css";
 
 class ToolTips extends Component {
   render() {

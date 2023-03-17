@@ -1,8 +1,7 @@
 import React , {useEffect} from 'react';
-import {useData} from './DataProvider';
-import Input from "./Input"
-import HeadingLabel from './HeadingLabel';
-import "../resources/styles.css"
+import {useData} from '../Providers/DataProvider';
+import Input from "../Common/Input"
+import HeadingLabel from '../Common/HeadingLabel';
 
 const BasicInfo = ()  => {
 

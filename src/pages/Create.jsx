@@ -1,8 +1,8 @@
 import React , {Component} from "react";
-import Dashboard from "../components/Dashboard";
-import MarkDownProvider from "../components/MarkDownProvider";
-import Demo from "../components/Demo";
-import DataProvider from '../components/DataProvider'
+import Dashboard from "../components/Dashboard/Dashboard"
+import MarkDownProvider from "../components/Providers/MarkDownProvider"
+import Demo from "../components/Demo/Demo"
+import DataProvider from "../components/Providers/DataProvider";
 import "../resources/styles.css"
 
 class Create extends Component {

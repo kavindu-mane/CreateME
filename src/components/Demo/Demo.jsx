@@ -1,7 +1,6 @@
 import React , {useState} from "react";
 import Editor from "./Editor";
 import Preview from "./Preview";
-import "../resources/styles.css"
 
 const Demo = () => {
 

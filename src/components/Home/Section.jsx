@@ -1,5 +1,4 @@
 import React , {Component} from "react";
-import "../resources/styles.css"
 
 class Section extends Component {
     render() { 

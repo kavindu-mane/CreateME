@@ -1,6 +1,5 @@
 import React , {Component} from "react";
-import ToolTip from "./ToolTip";
-import "../resources/styles.css";
+import ToolTip from "../Common/ToolTip";
 
 class MatrixIcon extends Component {
     render() { 

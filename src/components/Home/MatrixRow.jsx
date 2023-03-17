@@ -1,5 +1,4 @@
 import React , {Component} from "react";
-import "../resources/styles.css";
 import MatrixIcon from "./MatrixIcon";
 
 class MatrixRow extends Component {

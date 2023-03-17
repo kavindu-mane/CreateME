@@ -236,7 +236,7 @@ const DataProvider = ({children}) => {
                 "logo-type":"Flat"
         },
         "social":{
-                "title":"🌏 Connect with me",
+                "title":"🌏 \tConnect with me",
                 "value":{
                         "facebook":[],
                         "instagram":[],
@@ -251,7 +251,7 @@ const DataProvider = ({children}) => {
                         "hackerrank":[],
                         "hackerearth":[],
                         "medium":[],
-                        "keggle":[],
+                        "kaggle":[],
                         "codepen":[],
                         "leetcode":[],
                         "dribbble":[],

@@ -1,6 +1,6 @@
 import React , {Component} from "react";
-import Buttons from "../components/Buttons";
-import Sections from "../components/Sections";
+import Buttons from "../components/Common/Buttons";
+import Sections from "../components/Home/Sections";
 import "../resources/styles.css"
 
 class Home extends Component {

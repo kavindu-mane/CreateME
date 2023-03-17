@@ -1,5 +1,4 @@
 import React , {Component} from "react";
-import "../resources/styles.css"
 import ToolTip from "./ToolTip";
 
 class Buttons extends Component {
