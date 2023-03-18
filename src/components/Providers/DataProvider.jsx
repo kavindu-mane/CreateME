@@ -246,7 +246,7 @@ const DataProvider = ({children}) => {
                         "discord":[],
                         "github":[],
                         "youtube":[],
-                        "stack overflow":[],
+                        "stackoverflow":[],
                         "quora":[],
                         "hackerrank":[],
                         "hackerearth":[],
