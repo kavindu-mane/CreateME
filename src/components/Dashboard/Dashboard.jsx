@@ -15,14 +15,40 @@ const Dashboard = () => {
 
     const elemetMoveNext = (event , next) => {
         if(next === 1) setElement(<Skills/>)
+        else if(next === 2) setElement(<SocialMedia/>)
 
         setNextActive(nextActive + 1)
     }
 
     const elemetMoveBack = (event , next) => {
-        if(next === 2) setElement(<BasicInfo/>)
+        if(next === 3) setElement(<Skills/>)
+        else if(next === 2) setElement(<BasicInfo/>)
 
         setNextActive(nextActive - 1)
+    }
+
+    const addSocialNSkill = ( section) => {
+        const align = data[section]["align"]
+        const logoType = data[section]["logo-type"].replaceAll(" " , "-").toLowerCase()
+        let mdText = `<!--START_SECTION:${section.toUpperCase()}-->\n`
+        mdText += `## <p align = ${align}> ${data[section]["title"]} </p>\n`
+        mdText += `<div align = ${align}>\n`
+
+        if(section === "skill"){
+            data[section]["value"].forEach(e => {
+                if(e[1]) mdText += `<img src="https://img.shields.io/badge/${e[0]}-%23${e[3]}.svg?style=${logoType}&logo=${e[0]}&logoColor=white" alt=${e[0]} /> 
+                &ensp;\n`.replace("#" , "%23").replace("#" , "-sharp").replace("++&" , "plusplus&")
+            })
+        }else{
+            const element = data[section]["value"]
+            Object.keys(data[section]["value"]).forEach(e => {
+                if(element[e][1] !== "") mdText += `<a href=${element[e][0]+element[e][1]} ><img src="https://img.shields.io/badge/${e}-${element[e][1].replaceAll("-","--")}-%23${element[e][2]}.svg?style=${logoType}&logo=${e}&logoColor=white" 
+                alt=${e} /></a> &ensp;\n`.replaceAll("_","__")
+            })
+        }
+        mdText += `</div>\n<!--END_SECTION:${section.toUpperCase()}--><br/>\n\n`
+
+        return mdText
     }
 
     // get only title , subtitle and work
@@ -47,8 +73,8 @@ const Dashboard = () => {
                 value.split("\n").forEach(line => {
                     const mdFormats = {
                                         "title" :`# <p align = ${align}>${line}</p>\n`,
-                                        "subtitle" : `#### <p align = ${align}>${line}</p>\n`,
-                                        "work":`##### <p align = ${align}><i>${line}</i></p>\n`
+                                        "subtitle" : `### <p align = ${align}>${line}</p>\n`,
+                                        "work":`***<p align = ${align}>${line}</p>***\n`
                                         }
                     finalMd += mdFormats[element]
                 });
@@ -58,17 +84,12 @@ const Dashboard = () => {
 
         // skill data add to preview
         if(data["skill"]["active"]){
-            const align = data["skill"]["align"]
-            const logoType = data["skill"]["logo-type"].replaceAll(" " , "-").toLowerCase()
-            finalMd += `<!--START_SECTION:SKILL-->\n`
-            finalMd += `### <p align = ${align}> ${data["skill"]["title"]} </p>\n`
-            finalMd += `<div align = ${align}>\n`
+            finalMd += addSocialNSkill("skill")
+        }
 
-            data["skill"]["value"].forEach(e => {
-                if(e[1]) finalMd += `<img src="https://img.shields.io/badge/${e[0]}-%23${e[3]}.svg?style=${logoType}&logo=${e[0]}&logoColor=white" alt=${e[0]} /> 
-                &ensp;\n`.replace("#" , "%23").replace("#" , "-sharp").replace("++&" , "plusplus&")
-            })
-            finalMd += `</div>\n<!--END_SECTION:SKILL-->\n\n`
+         // social data add to preview
+        if(data["social"]["active"]){
+            finalMd += addSocialNSkill("social")
         }
 
         setMarkdown(finalMd)
