@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState , useEffect , useCallback} from 'react';
 import BasicInfo from '../BasicInfo/BasicInfo';
 import Skills from '../Skills/Skills';
 import { useData } from '../Providers/DataProvider';
@@ -27,7 +27,13 @@ const Dashboard = () => {
         setNextActive(nextActive - 1)
     }
 
-    const addSocialNSkill = ( section) => {
+    const setUserName = (username , key) => {
+        const withAtArray = ["youtube" , "hackerearth" , "medium" , "tiktok" , "twitter"]
+        if(withAtArray.includes(key)) return ("@" + username.replaceAll("-","--"))
+        else return username.replaceAll("-","--")
+    }
+
+    const addSocialNSkill = useCallback(( section) => {
         const align = data[section]["align"]
         const logoType = data[section]["logo-type"].replaceAll(" " , "-").toLowerCase()
         let mdText = `<!--START_SECTION:${section.toUpperCase()}-->\n`
@@ -42,14 +48,14 @@ const Dashboard = () => {
         }else{
             const element = data[section]["value"]
             Object.keys(data[section]["value"]).forEach(e => {
-                if(element[e][1] !== "") mdText += `<a href=${element[e][0]+element[e][1]} ><img src="https://img.shields.io/badge/${e}-${element[e][1].replaceAll("-","--")}-%23${element[e][2]}.svg?style=${logoType}&logo=${e}&logoColor=white" 
+                if(element[e][1] !== "") mdText += `<a href=${element[e][0]+element[e][1]} ><img src="https://img.shields.io/badge/${e}-${setUserName(element[e][1] , e)}-%23${element[e][2]}.svg?style=${logoType}&logo=${e}&logoColor=white" 
                 alt=${e} /></a> &ensp;\n`.replaceAll("_","__")
             })
         }
         mdText += `</div>\n<!--END_SECTION:${section.toUpperCase()}--><br/>\n\n`
 
         return mdText
-    }
+    },[data])
 
     // get only title , subtitle and work
     const field = Object.keys(data).slice(0,3)
@@ -93,7 +99,7 @@ const Dashboard = () => {
         }
 
         setMarkdown(finalMd)
-    }, [nextActive, field, setMarkdown, data]);
+    }, [nextActive, field, setMarkdown, data , addSocialNSkill]);
 
     const backBtnClasses = 'btn fw-bold text-secondary mt-3 bg-transparent border-0 d-flex justify-content-center'
 
