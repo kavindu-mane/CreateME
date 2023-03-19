@@ -4,9 +4,10 @@ import Skills from '../Skills/Skills';
 import { useData } from '../Providers/DataProvider';
 import { useMarkdown } from '../Providers/MarkDownProvider';
 import SocialMedia from '../Social/SocialMedia';
+import AddOns from '../AddOns/AddOns';
 
 const Dashboard = () => {
-    const[element , setElement] = useState(<SocialMedia/>) // BasicInfo
+    const[element , setElement] = useState(<AddOns/>) // BasicInfo
     const[nextActive , setNextActive] = useState(1)
     const[backBtnState , setBackBtnState] = useState(true)
     const[backBtnOpacity , setBackBtnOpacity] = useState("")

@@ -7,7 +7,7 @@ import "../resources/styles.css"
 
 class Create extends Component {
     render() {
-        const commonClass = "col-lg-6 pb-3 border border-secondary rounded-2 create"
+        const commonClass = "col-xl-6 pb-3 border border-secondary rounded-2 create"
         return (
             <React.Fragment>
                 <MarkDownProvider>

@@ -263,8 +263,17 @@ const DataProvider = ({children}) => {
                 },
                 "active":false,
                 "align":"left",
-                "logo-type":"flat"
-        }
+                "logo-type":"Flat"
+        },
+        "profile-views":{
+                "logo-type":"Flat",
+                "color":"Blue",
+                "active":false
+        },
+        "readme-stats":{
+                "theme":"Default"
+        },
+        "username":"kavindu-mane"
 
     });
 

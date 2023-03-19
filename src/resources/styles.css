@@ -142,6 +142,18 @@
     background-color: var(--move-btn-bg);
 }
 
+.addons-author , .addons-author:hover{
+    color:var(--addons-author-color);
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+}
+
+.addons-title , .addons-title:hover{
+    color:var(--addons-title-color);
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+}
+
 .skill-btn-bg , .skill-btn-bg:hover{
     font-family: 'Lato', sans-serif;
     letter-spacing: 1px;
