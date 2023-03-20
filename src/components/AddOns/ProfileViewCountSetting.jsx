@@ -18,7 +18,7 @@ const ProfileViewCounterSetting = () => {
         return data["profile-views"]["logo-type"]
     }
 
-    const coloreActiveOrNot = (theme) => {
+    const colorActiveOrNot = (theme) => {
         return data["profile-views"]["color"] === theme ? " active" : "";
     }
 
@@ -27,7 +27,7 @@ const ProfileViewCounterSetting = () => {
         setData({...data , "profile-views" : {...data["profile-views"] , "color" : newValue}})
     }
 
-    const ColorGetter = () => {
+    const colorGetter = () => {
         return data["profile-views"]["color"]
     }
 
@@ -53,12 +53,12 @@ const ProfileViewCounterSetting = () => {
                 <div className="dropdown col-12 col-sm-6 text-center">
                     <button className="btn btn-transpaent border-0 dropdown-toggle" type="button" data-bs-toggle="dropdown" 
                     aria-expanded="false">
-                        Color :&ensp; {ColorGetter()} &ensp; 
+                        Color :&ensp; {colorGetter()} &ensp; 
                     </button>
                 
                     <ul className="dropdown-menu dropdown-menu-end">
                         {colours.map((element , i) => {
-                           return (<li key={i} className={"dropdown-item" + coloreActiveOrNot(element)} onClick = {(event) => changeColor(event)}>{element}</li>)
+                           return (<li key={i} className={"dropdown-item" + colorActiveOrNot(element)} onClick = {(event) => changeColor(event)}>{element}</li>)
                         })}
 
                     </ul>

@@ -194,6 +194,19 @@
     color: var(--root-font);
 }
 
+.dropdown-menu {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+code {
+    color: var(--root-font);
+    margin-left: 5px;
+    font-style: italic;
+    font-weight: 600;
+    font-family: monospace;
+}
+
 @media (min-width:768px) {
     .intro{
         font-size: 3.5rem;

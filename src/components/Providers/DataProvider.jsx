@@ -271,7 +271,40 @@ const DataProvider = ({children}) => {
                 "active":false
         },
         "readme-stats":{
-                "theme":"Default"
+                "theme":"Default",
+                "hide-border":false,
+                "private":false,
+                "include-all":false,
+                "compact":false,
+                "stats-active":false,
+                "lang-active":false
+        },
+        "streak-stats":{
+                "theme":"Default",
+                "hide-border":false,
+                "active":false
+        },
+        "profile-trophy":{
+                "theme":"Flat",
+                "hide-border":false,
+                "no-bg":false,
+                "active":false
+        },
+        "waka-stats":{
+                "SHOW_LINES_OF_CODE": false,
+                "SHOW_TOTAL_CODE_TIME":false,
+                "SHOW_PROFILE_VIEWS":true,
+                "SHOW_COMMIT":true,
+                "SHOW_DAYS_OF_WEEK":true,
+                "SHOW_LANGUAGE":true,
+                "SHOW_OS":true,
+                "SHOW_PROJECTS":true,
+                "SHOW_TIMEZONE":true,
+                "SHOW_EDITORS":true,
+                "SHOW_LANGUAGE_PER_REPO":true,
+                "SHOW_SHORT_INFO":true,
+                "active":false
+
         },
         "username":"kavindu-mane"
 

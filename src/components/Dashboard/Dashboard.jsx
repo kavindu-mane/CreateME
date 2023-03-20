@@ -17,12 +17,14 @@ const Dashboard = () => {
     const elemetMoveNext = (event , next) => {
         if(next === 1) setElement(<Skills/>)
         else if(next === 2) setElement(<SocialMedia/>)
+        else if(next === 3) setElement(<AddOns/>)
 
         setNextActive(nextActive + 1)
     }
 
     const elemetMoveBack = (event , next) => {
-        if(next === 3) setElement(<Skills/>)
+        if(next === 3) setElement(<AddOns/>)
+        else if(next === 3) setElement(<Skills/>)
         else if(next === 2) setElement(<BasicInfo/>)
 
         setNextActive(nextActive - 1)
