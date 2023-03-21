@@ -55,9 +55,7 @@ const AddOns = () => {
                 <span className='m-0 addons-author'>&ensp; {title} </span>
             </div>
         )
-    }
-
-    
+    } 
 
     return ( 
         <React.Fragment>
@@ -161,7 +159,7 @@ const AddOns = () => {
                     will see your changes.</li>
             </ul>
 
-            <div></div>
+            <div className='bg-primary container'>dsa</div>
             
 
         </React.Fragment>
