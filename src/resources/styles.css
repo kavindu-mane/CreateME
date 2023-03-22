@@ -207,6 +207,10 @@ code {
     font-family: monospace;
 }
 
+.download-yml{
+    background-color: var(--download-yml-bg);
+}
+
 @media (min-width:768px) {
     .intro{
         font-size: 3.5rem;

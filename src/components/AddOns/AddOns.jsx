@@ -61,37 +61,54 @@ const AddOns = () => {
         return (`"${data["waka-stats"][key] ? "True" : "False"}"`)
     }
 
-    const returnYml = () => {
-        return(`
-        name: Waka Readme
+    const getDefaultTime = (index) => {
+        return data["waka-stats"]["time"][index]
+    }
 
-        on:
-            schedule:
-            # Runs at 12am IST
-            - cron: '30 18 * * *'
-            workflow_dispatch:
-        jobs:
-            update-readme:
-            name: Update Readme with Metrics
-            runs-on: ubuntu-latest
-            steps:
-                - uses: ${userName}/waka-readme-stats@master
-                with:
-                    WAKATIME_API_KEY: \${{ secrets.WAKATIME_API_KEY }}
-                    GH_TOKEN: \${{ secrets.GH_TOKEN }}
-                    SHOW_LINES_OF_CODE: ${returnWakaStats("SHOW_LINES_OF_CODE")}
-                    SHOW_TOTAL_CODE_TIME: ${returnWakaStats("SHOW_TOTAL_CODE_TIME")}
-                    SHOW_PROFILE_VIEWS: ${returnWakaStats("SHOW_PROFILE_VIEWS")}
-                    SHOW_COMMIT: ${returnWakaStats("SHOW_COMMIT")}
-                    SHOW_DAYS_OF_WEEK: ${returnWakaStats("SHOW_DAYS_OF_WEEK")}
-                    SHOW_LANGUAGE: ${returnWakaStats("SHOW_LANGUAGE")}
-                    SHOW_OS: ${returnWakaStats("SHOW_OS")}
-                    SHOW_PROJECTS: ${returnWakaStats("SHOW_PROJECTS")}
-                    SHOW_TIMEZONE: ${returnWakaStats("SHOW_TIMEZONE")}
-                    SHOW_EDITORS: ${returnWakaStats("SHOW_EDITORS")}
-                    SHOW_LANGUAGE_PER_REPO: ${returnWakaStats("SHOW_LANGUAGE_PER_REPO")}
-                    SHOW_SHORT_INFO: ${returnWakaStats("SHOW_SHORT_INFO")}`
+    const setTime = (event , index) => {
+        const newValue = data["waka-stats"]["time"]
+        newValue[index] = parseInt(event.target.value)
+        setData({...data , "waka-stats" : {...data["waka-stats"] , "time":newValue}})
+    }
+
+    const returnYml = () => {
+        return(`name: Waka Readme
+
+on:
+    schedule:
+        - cron: '${getDefaultTime(1)} ${getDefaultTime(0)} * * *'
+    workflow_dispatch:
+jobs:
+    update-readme:
+        name: Update Readme with Metrics
+        runs-on: ubuntu-latest
+        steps:
+          - uses: ${userName}/waka-readme-stats@master
+            with:
+                WAKATIME_API_KEY: \${{ secrets.WAKATIME_API_KEY }}
+                GH_TOKEN: \${{ secrets.GH_TOKEN }}
+                SHOW_LINES_OF_CODE: ${returnWakaStats("SHOW_LINES_OF_CODE")}
+                SHOW_TOTAL_CODE_TIME: ${returnWakaStats("SHOW_TOTAL_CODE_TIME")}
+                SHOW_PROFILE_VIEWS: ${returnWakaStats("SHOW_PROFILE_VIEWS")}
+                SHOW_COMMIT: ${returnWakaStats("SHOW_COMMIT")}
+                SHOW_DAYS_OF_WEEK: ${returnWakaStats("SHOW_DAYS_OF_WEEK")}
+                SHOW_LANGUAGE: ${returnWakaStats("SHOW_LANGUAGE")}
+                SHOW_OS: ${returnWakaStats("SHOW_OS")}
+                SHOW_PROJECTS: ${returnWakaStats("SHOW_PROJECTS")}
+                SHOW_TIMEZONE: ${returnWakaStats("SHOW_TIMEZONE")}
+                SHOW_EDITORS: ${returnWakaStats("SHOW_EDITORS")}
+                SHOW_LANGUAGE_PER_REPO: ${returnWakaStats("SHOW_LANGUAGE_PER_REPO")}
+                SHOW_SHORT_INFO: ${returnWakaStats("SHOW_SHORT_INFO")}`
         )
+    }
+
+    const downloadYml = () => {
+        const link = document.createElement('a')
+        const file = new Blob([returnYml()] , {type:"text/plain"})
+        link.href = URL.createObjectURL(file)
+        link.download = "Coding-stats-update.yml"
+        link.click()
+        URL.revokeObjectURL(link.href)
     }
 
     return ( 
@@ -158,7 +175,7 @@ const AddOns = () => {
             <GithubTrophySettings/>
 
             <div className="d-flex justify-content-center mt-3">
-                <img src={`https://github-profile-trophy.vercel.app/?username=${userName}&theme=${getTheme("profile-trophy")}&no-frame=${getOptionsTropy("hide-border")}&no-bg=${getOptionsTropy("no-bg")}&margin-w=2`} 
+                <img src={`https://github-profile-trophy.vercel.app/?username=${userName}&theme=${getTheme("profile-trophy")}&no-frame=${getOptionsTropy("hide-border")}&no-bg=${getOptionsTropy("no-bg")}&margin-w=2&column=-1`} 
                 alt={userName} style={{maxWidth:"95%"}}/>
             </div>
 
@@ -183,11 +200,17 @@ const AddOns = () => {
                     <li>GitHub Personal Access Token as <code>GH_TOKEN=&lt;your github access token&gt;</code> </li> 
                 </ul>
                 <li>Choose flags you need.</li>
-                <ul>
+                <ul className='list-unstyled ps-1 ps-md-5'>
                     {Object.keys(data["waka-stats"]).slice(0,12).map((key ,i) => {
                         return (<li key={i} className="d-flex">{checkBoxes("waka-stats" , key , key.replaceAll("_" , " "))}</li>)
                     })}
                 </ul>
+                <li className='mt-3'>Change schedule time &ensp;
+                        <input type="number" name="hour" id="hour" min={0} max={23} style={{width:"50px"}} 
+                        className="rounded ps-1" defaultValue={getDefaultTime(0)} onChange={(event)=> setTime(event , 0)}/>&ensp;<b>:</b>&ensp;
+                        <input type="number" name="min" id="min" min={0} max={59} style={{width:"50px"}} 
+                        className="rounded ps-1" defaultValue={getDefaultTime(1)} onChange={(event)=> setTime(event , 1)}/> &ensp;UTC
+                </li>
                 <li className='mt-2'>Go to profile repo and create a folder named <code>.github</code> and create <code>workflows</code> folder inside it if it doesn't exist.</li>
                 <li>Download below <code>yml</code> file and upload it to <code>workflows</code> folder</li>
                 <li>Now you can commit and wait for run automatically, but you can also trigger to run it 
@@ -196,10 +219,11 @@ const AddOns = () => {
                     will see your changes.</li>
             </ul>
 
-            <div className='p-2 bg-secondary rounded mx-0 mx-md-5 mt-4'>
-                <pre>{returnYml()}</pre>
-                <button className='btn btn-primary'><i>Download yml</i></button>
+            <div className='p-2 download-yml rounded mx-0 mx-md-5 mt-4'>
+                <pre className='ps-0 ps-md-5'>{returnYml()}</pre>
+                <button className='btn btn-primary btn-sm ms-1 mb-1' onClick={downloadYml}><i>Download yml</i></button>
             </div>
+            <hr />
             
 
         </React.Fragment>

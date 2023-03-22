@@ -7,6 +7,7 @@
     --root-color:#101220;
     --addons-author-color:#00f58f;
     --addons-title-color:#00e1ff;
+    --download-yml-bg:#363e44cc;
     --move-btn-bg:#383a44;
     --root-font:#fff;
     --skill-btn-bg:#99ebc3;
@@ -21,12 +22,13 @@
 .light-theme{
     --shadow-color:#b3b1b149;
     --background-color:#fcfcfc;
-    --background-secondary-color:#e7fff9;
+    --background-secondary-color:#DEF5E5;
     --link-color:#1C3879;
     --link-hover-background:#bfcbff55;
     --root-color:#fefefe;
     --addons-author-color:#4d00db;
     --addons-title-color:#0044ff;
+    --download-yml-bg:#22232754;
     --move-btn-bg:#1a2720;
     --root-font:#091e2b;
     --skill-btn-bg:#6199be;

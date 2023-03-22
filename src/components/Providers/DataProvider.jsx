@@ -303,7 +303,8 @@ const DataProvider = ({children}) => {
                 "SHOW_EDITORS":true,
                 "SHOW_LANGUAGE_PER_REPO":true,
                 "SHOW_SHORT_INFO":true,
-                "active":false
+                "active":false,
+                "time":[18,30]
 
         },
         "username":"kavindu-mane"
