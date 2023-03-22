@@ -55,7 +55,44 @@ const AddOns = () => {
                 <span className='m-0 addons-author'>&ensp; {title} </span>
             </div>
         )
-    } 
+    }
+
+    const returnWakaStats = (key) => {
+        return (`"${data["waka-stats"][key] ? "True" : "False"}"`)
+    }
+
+    const returnYml = () => {
+        return(`
+        name: Waka Readme
+
+        on:
+            schedule:
+            # Runs at 12am IST
+            - cron: '30 18 * * *'
+            workflow_dispatch:
+        jobs:
+            update-readme:
+            name: Update Readme with Metrics
+            runs-on: ubuntu-latest
+            steps:
+                - uses: ${userName}/waka-readme-stats@master
+                with:
+                    WAKATIME_API_KEY: \${{ secrets.WAKATIME_API_KEY }}
+                    GH_TOKEN: \${{ secrets.GH_TOKEN }}
+                    SHOW_LINES_OF_CODE: ${returnWakaStats("SHOW_LINES_OF_CODE")}
+                    SHOW_TOTAL_CODE_TIME: ${returnWakaStats("SHOW_TOTAL_CODE_TIME")}
+                    SHOW_PROFILE_VIEWS: ${returnWakaStats("SHOW_PROFILE_VIEWS")}
+                    SHOW_COMMIT: ${returnWakaStats("SHOW_COMMIT")}
+                    SHOW_DAYS_OF_WEEK: ${returnWakaStats("SHOW_DAYS_OF_WEEK")}
+                    SHOW_LANGUAGE: ${returnWakaStats("SHOW_LANGUAGE")}
+                    SHOW_OS: ${returnWakaStats("SHOW_OS")}
+                    SHOW_PROJECTS: ${returnWakaStats("SHOW_PROJECTS")}
+                    SHOW_TIMEZONE: ${returnWakaStats("SHOW_TIMEZONE")}
+                    SHOW_EDITORS: ${returnWakaStats("SHOW_EDITORS")}
+                    SHOW_LANGUAGE_PER_REPO: ${returnWakaStats("SHOW_LANGUAGE_PER_REPO")}
+                    SHOW_SHORT_INFO: ${returnWakaStats("SHOW_SHORT_INFO")}`
+        )
+    }
 
     return ( 
         <React.Fragment>
@@ -121,7 +158,7 @@ const AddOns = () => {
             <GithubTrophySettings/>
 
             <div className="d-flex justify-content-center mt-3">
-                <img src={`https://github-profile-trophy.vercel.app/?username=${userName}&theme=${getTheme("profile-trophy")}&no-frame=${getOptionsTropy("hide-border")}&no-bg=${getOptionsTropy("no-bg")}`} 
+                <img src={`https://github-profile-trophy.vercel.app/?username=${userName}&theme=${getTheme("profile-trophy")}&no-frame=${getOptionsTropy("hide-border")}&no-bg=${getOptionsTropy("no-bg")}&margin-w=2`} 
                 alt={userName} style={{maxWidth:"95%"}}/>
             </div>
 
@@ -159,7 +196,10 @@ const AddOns = () => {
                     will see your changes.</li>
             </ul>
 
-            <div className='bg-primary container'>dsa</div>
+            <div className='p-2 bg-secondary rounded mx-0 mx-md-5 mt-4'>
+                <pre>{returnYml()}</pre>
+                <button className='btn btn-primary'><i>Download yml</i></button>
+            </div>
             
 
         </React.Fragment>
