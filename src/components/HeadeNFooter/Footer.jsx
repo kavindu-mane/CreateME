@@ -31,7 +31,7 @@ class Footer extends Component {
                         </div>
                     </div>
                     {/* copyright */}
-                    <p className="text-secondary text-center mt-3 pb-2 mb-0">&copy; Copyright 2023 | Kavindu Wanniarachchi</p>
+                    <p className="copyright-text text-center mt-3 pb-2 mb-0"> <span className="text-warning">&lt;/&gt;</span>&ensp;with&ensp;&#10084;&#65039;&ensp;Kavindu Manahara</p>
                 </div>
             </React.Fragment>
         );

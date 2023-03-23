@@ -7,7 +7,7 @@ import SocialMedia from '../Social/SocialMedia';
 import AddOns from '../AddOns/AddOns';
 
 const Dashboard = () => {
-    const[element , setElement] = useState(<AddOns/>) // BasicInfo
+    const[element , setElement] = useState(<BasicInfo/>) // BasicInfo
     const[nextActive , setNextActive] = useState(1)
     const[backBtnState , setBackBtnState] = useState(true)
     const[backBtnOpacity , setBackBtnOpacity] = useState("")
@@ -23,7 +23,7 @@ const Dashboard = () => {
     }
 
     const elemetMoveBack = (event , next) => {
-        if(next === 3) setElement(<AddOns/>)
+        if(next === 4) setElement(<SocialMedia/>)
         else if(next === 3) setElement(<Skills/>)
         else if(next === 2) setElement(<BasicInfo/>)
 

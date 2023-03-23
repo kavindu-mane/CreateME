@@ -211,6 +211,9 @@ code {
     background-color: var(--download-yml-bg);
 }
 
+.copyright-text{
+    color: #d3d3d3;
+}
 @media (min-width:768px) {
     .intro{
         font-size: 3.5rem;
