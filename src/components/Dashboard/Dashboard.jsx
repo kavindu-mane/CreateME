@@ -5,10 +5,9 @@ import { useData } from '../Providers/DataProvider';
 import { useMarkdown } from '../Providers/MarkDownProvider';
 import SocialMedia from '../Social/SocialMedia';
 import AddOns from '../AddOns/AddOns';
-import GetUsername from '../GetUsername/GetUsername';
 
 const Dashboard = () => {
-    const[element , setElement] = useState(<GetUsername/>) // BasicInfo
+    const[element , setElement] = useState(<BasicInfo/>) // BasicInfo
     const[nextActive , setNextActive] = useState(1)
     const[backBtnState , setBackBtnState] = useState(true)
     const[backBtnOpacity , setBackBtnOpacity] = useState("")
@@ -61,16 +60,16 @@ const Dashboard = () => {
         return mdText
     },[data])
 
-    const setImages = useCallback((key , id) =>{
-        const src= document.getElementById(id).src
-        const alt= document.getElementById(id).src
+    const setImages = useCallback((key1 , key2) =>{
+        const src= data[key1][key2]
+        const alt= data["username"]
         return(
-`<!--START_SECTION:${key.toUpperCase()}-->
-<div align = "${data[key]["center"] ? "center" : "left"}">
+`<!--START_SECTION:${key1.toUpperCase()}-->
+<div align = "${data[key1]["center"] ? "center" : "left"}">
     <img src = "${src}" alt = "${alt}"/> 
 </div>
-<!--END_SECTION:${key.toUpperCase()}--><br/>\n\n`
-        )
+<!--END_SECTION:${key1.toUpperCase()}--><br/>\n\n`
+    )
     },[data])
 
     // get only title , subtitle and work
@@ -115,23 +114,23 @@ const Dashboard = () => {
         }
 
         if(data["profile-views"]["active"]){
-            finalMd += setImages("profile-views" , "visitor-count")
+            finalMd += setImages("profile-views" , "link")
         }
 
         if(data["readme-stats"]["stats-active"]){
-            finalMd += setImages("readme-stats" , "github-stats")
+            finalMd += setImages("readme-stats" , "stats-link")
         }
 
         if(data["readme-stats"]["lang-active"]){
-            finalMd += setImages("readme-stats" , "github-toplang")
+            finalMd += setImages("readme-stats" , "lang-link")
         }
 
         if(data["streak-stats"]["active"]){
-            finalMd += setImages("streak-stats" , "github-streak")
+            finalMd += setImages("streak-stats" , "link")
         }
 
         if(data["profile-trophy"]["active"]){
-            finalMd += setImages("profile-trophy" , "github-trophy")
+            finalMd += setImages("profile-trophy" , "link")
         }
 
         if(data["waka-stats"]["active"]){

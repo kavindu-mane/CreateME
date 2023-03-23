@@ -269,7 +269,8 @@ const DataProvider = ({children}) => {
                 "logo-type":"Flat",
                 "color":"Blue",
                 "active":false,
-                "center":false
+                "center":false,
+                "link":""
         },
         "readme-stats":{
                 "theme":"Default",
@@ -279,20 +280,24 @@ const DataProvider = ({children}) => {
                 "compact":false,
                 "stats-active":false,
                 "lang-active":false,
-                "center":false
+                "center":false,
+                "stats-link":"",
+                "lang-link":""
         },
         "streak-stats":{
                 "theme":"Default",
                 "hide-border":false,
                 "active":false,
-                "center":false
+                "center":false,
+                "link":""
         },
         "profile-trophy":{
                 "theme":"Flat",
                 "hide-border":false,
                 "no-bg":false,
                 "active":false,
-                "center":false
+                "center":false,
+                "link":""
         },
         "waka-stats":{
                 "SHOW_LINES_OF_CODE": false,
@@ -311,7 +316,7 @@ const DataProvider = ({children}) => {
                 "time":[18,30]
 
         },
-        "username":"kavindu-mane"
+        "username":""
 
     });
 

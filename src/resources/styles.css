@@ -214,6 +214,52 @@ code {
 .copyright-text{
     color: #d3d3d3;
 }
+.username-input{
+    border: none;
+    border-bottom: 5px solid var(--gold);
+    border-radius: 5px;
+    background-color: transparent;
+    color: var(--addons-author-color);
+    outline: none;
+}
+
+.start-btn{
+    color: var(--addons-author-color) !important;
+    transition: 200ms linear;
+    border: none;
+}
+.start-btn:hover{
+    transform: translateX(10px);
+}
+
+.notification{
+    background-color: #0cce8d;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 5px;
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    left: 50%;
+    top: -500px;
+    transition: 800ms linear;
+    transform: translateX(-50%);
+}
+
+.keyframe{
+    animation: animation 4s;
+}
+
+@keyframes animation{
+    0% , 100%{
+        top:-500px
+    }
+    20% , 80%{
+        top: 80px;
+    }
+}
+
 @media (min-width:768px) {
     .intro{
         font-size: 3.5rem;

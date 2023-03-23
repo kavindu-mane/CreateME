@@ -42,6 +42,11 @@ const AddOns = () => {
         return data[key1][key2]
     }
 
+    const saveUrl = (event , key1 , key2 ) => {
+        const Url = event.target.src
+        setData({...data , [key1] : {...data[key1] , [key2]:Url}})
+    }
+
     const setActionStatus = (key1 , key2) => {
         const newValue =  !data[key1][key2]
         setData({...data , [key1] : {...data[key1] , [key2] : newValue}})
@@ -122,7 +127,7 @@ jobs:
             <ProfileViewCounterSetting/>
 
             <div className="d-flex justify-content-center">
-                <img src={`https://komarev.com/ghpvc/?username=${userName}&color=${getColor()}&style=${getStyle()}`} alt={userName} id="visitor-count"/>
+                <img src={`https://komarev.com/ghpvc/?username=${userName}&color=${getColor()}&style=${getStyle()}`} alt={userName} id="visitor-count" onLoad={(event) => saveUrl(event , "profile-views" , "link")}/>
             </div>
 
             <div className="row mt-3">
@@ -143,12 +148,12 @@ jobs:
 
             <div className="d-flex justify-content-center">
                 <img src={`https://github-readme-stats.vercel.app/api?username=${userName}&show_icons=true&theme=${getTheme("readme-stats")}&hide_border=${getOptions("hide-border")}&include_all_commits=${getOptions("include-all")}&count_private=${getOptions("private")}`} 
-                alt={userName} style={{maxWidth:"95%"}} id="github-stats"/>
+                alt={userName} style={{maxWidth:"95%"}} id="github-stats" onLoad={(event) => saveUrl(event , "readme-stats" , "stats-link")}/>
             </div>
 
             <div className="d-flex justify-content-center mt-3">
                 <img src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${userName}&langs_count=8${getLayout()}&theme=${getTheme("readme-stats")}&hide_border=${getOptions("hide-border")}`} 
-                alt={userName} style={{maxWidth:"95%"}} id="github-toplang"/>
+                alt={userName} style={{maxWidth:"95%"}} id="github-toplang" onLoad={(event) => saveUrl(event , "readme-stats" , "lang-link")}/>
             </div>
 
             <div className="row mt-3">
@@ -169,7 +174,7 @@ jobs:
 
             <div className="d-flex justify-content-center mt-3">
                 <img src={`https://streak-stats.demolab.com/?user=${userName}&theme=${getTheme("streak-stats")}&hide_border=${getOptionsStreak("hide-border")}`} 
-                alt={userName} style={{maxWidth:"95%"}} id="github-streak"/>
+                alt={userName} style={{maxWidth:"95%"}} id="github-streak" onLoad={(event) => saveUrl(event , "streak-stats" , "link")}/>
             </div>
 
             <div className="row mt-3">
@@ -190,7 +195,7 @@ jobs:
 
             <div className="d-flex justify-content-center mt-3">
                 <img src={`https://github-profile-trophy.vercel.app/?username=${userName}&theme=${getTheme("profile-trophy")}&no-frame=${getOptionsTropy("hide-border")}&no-bg=${getOptionsTropy("no-bg")}&margin-w=2&column=-1`} 
-                alt={userName} style={{maxWidth:"95%"}} id="github-trophy"/>
+                alt={userName} style={{maxWidth:"95%"}} id="github-trophy" onLoad={(event) => saveUrl(event , "profile-trophy" , "link")}/>
             </div>
 
             <div className="row mt-3">

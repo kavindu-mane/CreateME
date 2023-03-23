@@ -5,11 +5,12 @@ import Error from "./pages/Error";
 import Footer from "./components/HeadeNFooter/Footer";
 import React from "react";
 import { BrowserRouter as Router , Routes , Route } from "react-router-dom";
+import DataProvider from "./components/Providers/DataProvider";
 
 
 const linkedObject = {
   "/":<Home/> ,
-  "/create": <Create/>
+  "/create": <DataProvider><Create/></DataProvider> ,
 }
 
 function App() {
