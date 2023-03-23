@@ -122,10 +122,17 @@ jobs:
             <ProfileViewCounterSetting/>
 
             <div className="d-flex justify-content-center">
-                <img src={`https://komarev.com/ghpvc/?username=${userName}&color=${getColor()}&style=${getStyle()}`} alt={userName} />
+                <img src={`https://komarev.com/ghpvc/?username=${userName}&color=${getColor()}&style=${getStyle()}`} alt={userName} id="visitor-count"/>
             </div>
 
-            {checkBoxes("profile-views" , "active" , "Add visitors count")}
+            <div className="row mt-3">
+                <div className="col-12 col-sm-6">
+                    {checkBoxes("profile-views" , "active" , "Add visitors count")}    
+                </div>
+                <div className="col-12 col-sm-6">
+                    {checkBoxes("profile-views" , "center" , "Center visitors count")}
+                </div>
+            </div>
             <hr/>
 
             {/* github readme stats */}
@@ -136,12 +143,12 @@ jobs:
 
             <div className="d-flex justify-content-center">
                 <img src={`https://github-readme-stats.vercel.app/api?username=${userName}&show_icons=true&theme=${getTheme("readme-stats")}&hide_border=${getOptions("hide-border")}&include_all_commits=${getOptions("include-all")}&count_private=${getOptions("private")}`} 
-                alt={userName} style={{maxWidth:"95%"}}/>
+                alt={userName} style={{maxWidth:"95%"}} id="github-stats"/>
             </div>
 
             <div className="d-flex justify-content-center mt-3">
                 <img src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${userName}&langs_count=8${getLayout()}&theme=${getTheme("readme-stats")}&hide_border=${getOptions("hide-border")}`} 
-                alt={userName} style={{maxWidth:"95%"}}/>
+                alt={userName} style={{maxWidth:"95%"}} id="github-toplang"/>
             </div>
 
             <div className="row mt-3">
@@ -154,7 +161,7 @@ jobs:
             </div>
             <hr/>
 
-            {/* github readme stats */}
+            {/* github readme streak stats */}
             <AddOnsTitle title = "GitHub README Streak Stats" repo = "https://github.com/DenverCoder1/github-readme-streak-stats"
             dev = "Jonah Lawrence" acc = "https://github.com/DenverCoder1"/>
 
@@ -162,24 +169,38 @@ jobs:
 
             <div className="d-flex justify-content-center mt-3">
                 <img src={`https://streak-stats.demolab.com/?user=${userName}&theme=${getTheme("streak-stats")}&hide_border=${getOptionsStreak("hide-border")}`} 
-                alt={userName} style={{maxWidth:"95%"}}/>
+                alt={userName} style={{maxWidth:"95%"}} id="github-streak"/>
             </div>
 
-            {checkBoxes("streak-stats" , "active" , "Add streak stats")}
+            <div className="row mt-3">
+                <div className="col-12 col-sm-6">
+                    {checkBoxes("streak-stats" , "active" , "Add streak stats")}    
+                </div>
+                <div className="col-12 col-sm-6">
+                    {checkBoxes("streak-stats" , "center" , "Center streak stats")}
+                </div>
+            </div>
             <hr/>
 
             {/* github profile trophy */}
             <AddOnsTitle title = "GitHub Profile Trophy" repo = "https://github.com/ryo-ma/github-profile-trophy"
-            dev = "Ryo-Ma" acc = "https://github.com/ryo-ma"/>
+            dev = "Ryota Sakamoto" acc = "https://github.com/ryo-ma"/>
 
             <GithubTrophySettings/>
 
             <div className="d-flex justify-content-center mt-3">
                 <img src={`https://github-profile-trophy.vercel.app/?username=${userName}&theme=${getTheme("profile-trophy")}&no-frame=${getOptionsTropy("hide-border")}&no-bg=${getOptionsTropy("no-bg")}&margin-w=2&column=-1`} 
-                alt={userName} style={{maxWidth:"95%"}}/>
+                alt={userName} style={{maxWidth:"95%"}} id="github-trophy"/>
             </div>
 
-            {checkBoxes("profile-trophy" , "active" , "Add profile trophy")}
+            <div className="row mt-3">
+                <div className="col-12 col-sm-6">
+                    {checkBoxes("profile-trophy" , "active" , "Add profile trophy")}    
+                </div>
+                <div className="col-12 col-sm-6">
+                    {checkBoxes("profile-trophy" , "center" , "Center profile trophy")}
+                </div>
+            </div>
             <hr/>
 
             {/*waka readme stats */}
@@ -223,6 +244,8 @@ jobs:
                 <pre className='ps-0 ps-md-5'>{returnYml()}</pre>
                 <button className='btn btn-primary btn-sm ms-1 mb-1' onClick={downloadYml}><i>Download yml</i></button>
             </div>
+
+            {checkBoxes("waka-stats" , "active" , "Add waka stats")}
             <hr />
             
 

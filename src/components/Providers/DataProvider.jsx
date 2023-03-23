@@ -268,7 +268,8 @@ const DataProvider = ({children}) => {
         "profile-views":{
                 "logo-type":"Flat",
                 "color":"Blue",
-                "active":false
+                "active":false,
+                "center":false
         },
         "readme-stats":{
                 "theme":"Default",
@@ -277,18 +278,21 @@ const DataProvider = ({children}) => {
                 "include-all":false,
                 "compact":false,
                 "stats-active":false,
-                "lang-active":false
+                "lang-active":false,
+                "center":false
         },
         "streak-stats":{
                 "theme":"Default",
                 "hide-border":false,
-                "active":false
+                "active":false,
+                "center":false
         },
         "profile-trophy":{
                 "theme":"Flat",
                 "hide-border":false,
                 "no-bg":false,
-                "active":false
+                "active":false,
+                "center":false
         },
         "waka-stats":{
                 "SHOW_LINES_OF_CODE": false,

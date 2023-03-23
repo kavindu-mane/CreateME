@@ -67,6 +67,9 @@ const GithubReadmeStatsSettingd = () => {
 
                     {/*  compact*/}
                     {checkBoxes("compact" , "Compact Layout")}
+
+                    {/*  center*/}
+                    {checkBoxes("center" , "Center card")}
                 </div>
             </div>
         </React.Fragment>

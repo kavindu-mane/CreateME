@@ -5,9 +5,10 @@ import { useData } from '../Providers/DataProvider';
 import { useMarkdown } from '../Providers/MarkDownProvider';
 import SocialMedia from '../Social/SocialMedia';
 import AddOns from '../AddOns/AddOns';
+import GetUsername from '../GetUsername/GetUsername';
 
 const Dashboard = () => {
-    const[element , setElement] = useState(<BasicInfo/>) // BasicInfo
+    const[element , setElement] = useState(<GetUsername/>) // BasicInfo
     const[nextActive , setNextActive] = useState(1)
     const[backBtnState , setBackBtnState] = useState(true)
     const[backBtnOpacity , setBackBtnOpacity] = useState("")
@@ -60,6 +61,18 @@ const Dashboard = () => {
         return mdText
     },[data])
 
+    const setImages = useCallback((key , id) =>{
+        const src= document.getElementById(id).src
+        const alt= document.getElementById(id).src
+        return(
+`<!--START_SECTION:${key.toUpperCase()}-->
+<div align = "${data[key]["center"] ? "center" : "left"}">
+    <img src = "${src}" alt = "${alt}"/> 
+</div>
+<!--END_SECTION:${key.toUpperCase()}--><br/>\n\n`
+        )
+    },[data])
+
     // get only title , subtitle and work
     const field = Object.keys(data).slice(0,3)
 
@@ -101,8 +114,34 @@ const Dashboard = () => {
             finalMd += addSocialNSkill("social")
         }
 
+        if(data["profile-views"]["active"]){
+            finalMd += setImages("profile-views" , "visitor-count")
+        }
+
+        if(data["readme-stats"]["stats-active"]){
+            finalMd += setImages("readme-stats" , "github-stats")
+        }
+
+        if(data["readme-stats"]["lang-active"]){
+            finalMd += setImages("readme-stats" , "github-toplang")
+        }
+
+        if(data["streak-stats"]["active"]){
+            finalMd += setImages("streak-stats" , "github-streak")
+        }
+
+        if(data["profile-trophy"]["active"]){
+            finalMd += setImages("profile-trophy" , "github-trophy")
+        }
+
+        if(data["waka-stats"]["active"]){
+            finalMd += "<!--START_SECTION:waka-->\n<!--END_SECTION:waka-->\n\n"
+        }
+
+        finalMd += "\n<!-- Created with CreateME profile readme generator-->"
+
         setMarkdown(finalMd)
-    }, [nextActive, field, setMarkdown, data , addSocialNSkill]);
+    }, [nextActive, field, setMarkdown, data , addSocialNSkill , setImages]);
 
     const backBtnClasses = 'btn fw-bold text-secondary mt-3 bg-transparent border-0 d-flex justify-content-center'
 
