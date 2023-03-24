@@ -96,6 +96,8 @@
     background: linear-gradient(#213547 , #14243a);
     border-radius: 15px 15px 0 0;
     padding-top: 10px;
+    position: sticky;
+    top: 100%;
 }
 
 .intro-div{
@@ -216,8 +218,7 @@ code {
 }
 .username-input{
     border: none;
-    border-bottom: 5px solid var(--gold);
-    border-radius: 5px;
+    border-bottom: 3px solid var(--gold);
     background-color: transparent;
     color: var(--addons-author-color);
     outline: none;
@@ -247,6 +248,27 @@ code {
     transform: translateX(-50%);
 }
 
+.scroll-to-top{
+    width: 40px;
+    height: 40px;
+    background-color: #0cce8d;
+    color: white;
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    z-index: 999;
+    cursor: pointer;
+    transition: 200ms linear;
+    transform: scale(0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.scroll-btn-show{
+    transform: scale(1) !important;
+}
+
 .keyframe{
     animation: animation 4s;
 }
@@ -257,6 +279,21 @@ code {
     }
     20% , 80%{
         top: 80px;
+    }
+}
+
+.rotate-me{
+    transition: 800ms ease-in-out;
+    animation: rotate 4s infinite;
+}
+
+@keyframes rotate{
+    0% ,100% {
+        transform: rotateX(180deg);
+    }
+
+    20% , 80%{
+        transform: rotateX(0deg);
     }
 }
 
@@ -278,5 +315,11 @@ code {
         height: 60px;
     }
     
+}
+
+@media (min-width:1200px){
+    .username-heading{
+        font-size: 4rem !important;
+    }
 }
   

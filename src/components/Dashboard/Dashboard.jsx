@@ -20,6 +20,7 @@ const Dashboard = () => {
         else if(next === 3) setElement(<AddOns/>)
 
         setNextActive(nextActive + 1)
+        window.scrollTo(0,0)
     }
 
     const elemetMoveBack = (event , next) => {
@@ -28,6 +29,7 @@ const Dashboard = () => {
         else if(next === 2) setElement(<BasicInfo/>)
 
         setNextActive(nextActive - 1)
+        // window.scrollTo(0,0)
     }
 
     const setUserName = (username , key) => {
@@ -93,7 +95,7 @@ const Dashboard = () => {
                 finalMd += startComment
                 value.split("\n").forEach(line => {
                     const mdFormats = {
-                                        "title" :`# <p align = ${align}>${line}</p>\n`,
+                                        "title" :`# <p align = ${align}>${line}&ensp;<img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" alt= ${data["username"]} width="35"></p>\n`,
                                         "subtitle" : `### <p align = ${align}>${line}</p>\n`,
                                         "work":`***<p align = ${align}>${line}</p>***\n`
                                         }

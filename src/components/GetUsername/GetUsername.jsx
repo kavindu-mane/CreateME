@@ -16,27 +16,25 @@ const GetUsername = () => {
             notification.classList += " keyframe"
             setTimeout(() => notification.classList.remove("keyframe"), 5000)
         }else{
-            setData({...data , "username":value})
+            setData({...data , "username": value})
         }
     }
 
-    // for enter key
-    document.addEventListener("keypress" , (event) => {
-        if(event.key === "Enter"){
-            verify()
-        }
-    })
-
     return ( 
         <React.Fragment>
-            <div className="container-fluid m-0 row mb-5">
+            <div className="container-fluid m-0 row mb-5 mt-5 pt-5" onKeyDown={(event) =>  {if(event.key === "Enter") verify()}}>
                 <div className="col-12 col-md-6 ">
                     <img src={Image} alt="get-username" style={{maxWidth:"800px"}}/>
                 </div>
-                <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
-                    <input type="text" name="username-input" id="username-input" placeholder={"Enter your GitHub username"} 
-                    className= "p-1 username-input fs-4 fst-italic mt-5 mt-md-0"/>
-                    <button className='btn fs-1 mt-1 start-btn mt-5 mt-md-0' onClick={verify}>&rarr;</button>
+                <div className="col-12 col-md-6 d-flex flex-column justify-content-center">
+                    <h2 className="f-raleway ms-2 username-heading rotate-me">Create
+                    <span className="text-primary">ME</span></h2>
+                    <h1 style={{fontFamily: "'Lato', sans-serif" , color: "var(--root-font)"}} className="fs-1 ms-2 username-heading">Best Profile README generator.</h1>
+                    <div className='d-flex align-items-center ms-2 mt-5'>
+                        <input type="text" name="username-input" id="username-input" placeholder={"Enter your GitHub username"} 
+                        className= "p-1 username-input fs-4 fst-italic" />
+                        <button className='btn fs-1 mt-1 start-btn' id="arrow-btn" onClick={verify}>&rarr;</button>
+                    </div>
                 </div>
             </div>
 
