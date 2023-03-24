@@ -16,7 +16,12 @@ const GetUsername = () => {
             notification.classList += " keyframe"
             setTimeout(() => notification.classList.remove("keyframe"), 5000)
         }else{
-            setData({...data , "username": value})
+            fetch("https://api.github.com/users/"+value)
+            .then((result) => result.json())
+            .then((d) => {
+                const name = "Hi , I'm "+ d["name"]
+                setData({...data , "title":{...data["title"] , "value" : name} , "username": value})
+            })
         }
     }
 

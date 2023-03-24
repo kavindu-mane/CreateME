@@ -30,7 +30,7 @@ const DataProvider = ({children}) => {
 
     const[data , setData] = useState({
         "title":{
-                "value":"Hi , I'm",
+                "value":"",
                 "active":true,
                 "align":"left"
         },

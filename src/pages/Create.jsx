@@ -9,8 +9,9 @@ import GetUsername from "../components/GetUsername/GetUsername";
 const Create = () => {
     const commonClass = "col-xl-6 pb-3 border border-secondary rounded-2 create"
     const[data,] = useData()
-    const checkUsername = (useName) => {
-        if(useName !== ""){
+
+    const checkUsername = (userName) => {
+        if(userName !== ""){
             return(
             <div className="container-fluid pt-5 mb-5 row mx-0 px-4">
                 <div className={"px-3 mt-5 " + commonClass}>

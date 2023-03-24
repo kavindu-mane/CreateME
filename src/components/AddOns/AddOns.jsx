@@ -118,7 +118,7 @@ jobs:
 
     return ( 
         <React.Fragment>
-             <h3 className='ps-3 m-0 my-3 f-raleway fw-light'>Add-ons</h3>
+            <h3 className='ps-3 m-0 my-3 f-raleway fw-light'>Add-ons</h3>
 
             {/* visitors counter */}
             <AddOnsTitle title = "GitHub Profile Views Counter" repo = "https://github.com/antonkomarev/github-profile-views-counter"

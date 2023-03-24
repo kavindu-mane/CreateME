@@ -29,7 +29,6 @@ const Dashboard = () => {
         else if(next === 2) setElement(<BasicInfo/>)
 
         setNextActive(nextActive - 1)
-        // window.scrollTo(0,0)
     }
 
     const setUserName = (username , key) => {
@@ -148,7 +147,7 @@ const Dashboard = () => {
 
     return (
         <React.Fragment>
-            <div className="pb-1">
+            <div className="pb-1" >
                 <button className={ backBtnClasses+ backBtnOpacity}
                 onClick={(event) => elemetMoveBack(event , nextActive)} disabled = {backBtnState}>
                     <span className="material-symbols-outlined">arrow_back</span>

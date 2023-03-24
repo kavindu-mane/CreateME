@@ -8,8 +8,8 @@ const SocialMedia = () => {
     const[data , ] = useData()
 
     const returnIconName = (key) => {
-            if(key === "dev.to") return "dev-dot-to"
-            else return key
+        if(key === "dev.to") return "dev-dot-to"
+        else return key
     }
 
     const returnPlaceHolder = (key) => {
@@ -22,7 +22,7 @@ const SocialMedia = () => {
     return ( 
         <React.Fragment>
             {/*Social setting  */}
-           <SkillNSocialSetting section={"social"} title = "Social Media" placeholder= "Connect with me" />
+            <SkillNSocialSetting section={"social"} title = "Social Media" placeholder= "Connect with me" />
 
             <div className="container-fluid row p-0 m-0">
                 {Object.keys(data["social"]["value"]).map((a , i) => 
