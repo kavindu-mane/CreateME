@@ -5,12 +5,15 @@ import { useData } from '../Providers/DataProvider';
 import { useMarkdown } from '../Providers/MarkDownProvider';
 import SocialMedia from '../Social/SocialMedia';
 import AddOns from '../AddOns/AddOns';
+import DownladOutput from '../DownladOutput/DownladOutput';
 
 const Dashboard = () => {
-    const[element , setElement] = useState(<BasicInfo/>) // BasicInfo
+    const[element , setElement] = useState(<DownladOutput/>) // BasicInfo
     const[nextActive , setNextActive] = useState(1)
     const[backBtnState , setBackBtnState] = useState(true)
     const[backBtnOpacity , setBackBtnOpacity] = useState("")
+    const[nextBtnState , setNextBtnState] = useState(false)
+    const[nextBtnOpacity , setNextBtnOpacity] = useState("")
     const[data , ] = useData()
     const[, setMarkdown] = useMarkdown()
 
@@ -18,13 +21,16 @@ const Dashboard = () => {
         if(next === 1) setElement(<Skills/>)
         else if(next === 2) setElement(<SocialMedia/>)
         else if(next === 3) setElement(<AddOns/>)
+        else if(next === 4) setElement(<DownladOutput/>)
+        if(next === 3) event.target.innerHTML = "Done" 
 
         setNextActive(nextActive + 1)
         window.scrollTo(0,0)
     }
 
     const elemetMoveBack = (event , next) => {
-        if(next === 4) setElement(<SocialMedia/>)
+        if(next === 5) setElement(<DownladOutput/>)
+        else if(next === 4) setElement(<SocialMedia/>)
         else if(next === 3) setElement(<Skills/>)
         else if(next === 2) setElement(<BasicInfo/>)
 
@@ -77,8 +83,6 @@ const Dashboard = () => {
     const field = Object.keys(data).slice(0,3)
 
     useEffect(() => {
-        setBackBtnState(nextActive === 1 ? true : false)
-        setBackBtnOpacity(nextActive === 1 ? " opacity-0" : "")
 
         // markdown text creation
         let finalMd = ""
@@ -143,6 +147,14 @@ const Dashboard = () => {
         setMarkdown(finalMd)
     }, [nextActive, field, setMarkdown, data , addSocialNSkill , setImages]);
 
+    useEffect(() => {
+        if(nextActive === 5) document.getElementById("left-column").classList.remove("create","border") 
+        setBackBtnState(nextActive === 1 || 5 ? true : false)
+        setBackBtnOpacity(nextActive === 1 || 5 ? " opacity-0" : "")
+        setNextBtnState(nextActive === 5 ? true : false)
+        setNextBtnOpacity(nextActive === 5 ? " opacity-0" : "")
+    },[nextActive])
+
     const backBtnClasses = 'btn fw-bold text-secondary mt-3 bg-transparent border-0 d-flex justify-content-center'
 
     return (
@@ -156,8 +168,8 @@ const Dashboard = () => {
             
             {element}
 
-            <div className="px-2 d-flex justify-content-end">
-                <button className='btn btn-primary mt-3 px-4'
+            <div className={"px-2 d-flex justify-content-end " + nextBtnOpacity}>
+                <button className='btn btn-primary mt-3 px-4'disabled = {nextBtnState}
                 onClick={(event) => elemetMoveNext(event , nextActive)}>Next</button>
             </div>
         </React.Fragment>

@@ -14,7 +14,7 @@ const Create = () => {
         if(userName !== ""){
             return(
             <div className="container-fluid pt-5 mb-5 row mx-0 px-4">
-                <div className={"px-3 mt-5 " + commonClass}>
+                <div className={"px-3 mt-5 " + commonClass} id = "left-column">
                     <Dashboard/>
                 </div>
                 <div className={"p-0 mt-3 mt-lg-5 " + commonClass}>
@@ -24,7 +24,7 @@ const Create = () => {
             )
         }else{
             return(
-                <div className="container-fluid mx-0 px-4 pt-5">
+                <div className="container-fluid mx-0 px-4 pt-5" id = {"get-username"}>
                     <GetUsername/>
                 </div>
             )

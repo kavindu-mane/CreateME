@@ -314,9 +314,8 @@ const DataProvider = ({children}) => {
                 "SHOW_SHORT_INFO":true,
                 "active":false,
                 "time":[18,30]
-
         },
-        "username":""
+        "username":"kavindu-mane"
 
     });
 

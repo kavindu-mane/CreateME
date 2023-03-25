@@ -27,10 +27,7 @@ const GetUsername = () => {
 
     return ( 
         <React.Fragment>
-            <div className="container-fluid m-0 row mb-5 mt-5 pt-5" onKeyDown={(event) =>  {if(event.key === "Enter") verify()}}>
-                <div className="col-12 col-md-6 ">
-                    <img src={Image} alt="get-username" style={{maxWidth:"800px"}}/>
-                </div>
+            <div className="container-fluid m-0 row mt-5 pt-5" onKeyDown={(event) =>  {if(event.key === "Enter") verify()}}>
                 <div className="col-12 col-md-6 d-flex flex-column justify-content-center">
                     <h2 className="f-raleway ms-2 username-heading rotate-me">Create
                     <span className="text-primary">ME</span></h2>
@@ -41,6 +38,11 @@ const GetUsername = () => {
                         <button className='btn fs-1 mt-1 start-btn' id="arrow-btn" onClick={verify}>&rarr;</button>
                     </div>
                 </div>
+
+                <div className="col-12 col-md-6 mt-5 pt-2 mt-md-0">
+                    <img src={Image} alt="get-username" style={{maxWidth:"800px"}}/>
+                </div>
+
             </div>
 
             {/*Error notification  */}

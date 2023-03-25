@@ -224,6 +224,20 @@ code {
     outline: none;
 }
 
+#get-username::before{
+    content: "";
+    background-image: url("./bg.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    opacity: var(--root-div-opacity);
+}
+
 .start-btn{
     color: var(--addons-author-color) !important;
     transition: 200ms linear;
