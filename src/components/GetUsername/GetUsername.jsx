@@ -19,7 +19,7 @@ const GetUsername = () => {
             fetch("https://api.github.com/users/"+value)
             .then((result) => result.json())
             .then((d) => {
-                const name = "Hi , I'm "+ d["name"]
+                const name = "Hi , I'm "+ (d["name"] === null ? value : d["name"])
                 setData({...data , "title":{...data["title"] , "value" : name} , "username": value})
             })
         }

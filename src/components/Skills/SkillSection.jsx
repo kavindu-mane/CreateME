@@ -2,19 +2,9 @@ import React from 'react'
 import { useData } from '../Providers/DataProvider'
 import AddSkillButton from './AddSkillButton'
 
-const SkillSection = ({start ,  end , align , title}) => {
+const SkillSection = ({start ,  end , align , title , buttonClick}) => {
 
-    const[data , setData] = useData()
-
-    // add or remove skill
-    const buttonClick = (event) => {
-        const index = event.target.id.slice(6)
-        let temp1 = data["skill"]["value"]
-        let temp2 = temp1[index]
-        temp2[1] = !temp2[1]
-        temp1[index] = temp2
-        setData({...data , "skill" : {...data["skill"] , "value" : temp1}})
-    }
+    const[data ,] = useData()
 
     return ( 
         <React.Fragment>

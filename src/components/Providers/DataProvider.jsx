@@ -55,7 +55,7 @@ const DataProvider = ({children}) => {
         },
         "skill":{
                 "title":"🖥️ \tTech Stack",
-                "value":[["Apache groovy" , false , returnOriginalIcon("groovy") , "4298b8"], // languages
+                "value":[["apache groovy" , false , returnOriginalIcon("groovy") , "4298b8"], // languages
                         ["c" , false , returnOriginalIcon("c") , "555555"],
                         ["c++" , false , returnOriginalIcon("cplusplus") , "f34b7d"],
                         ["c#" , false , returnOriginalIcon("csharp") , "178600"],
