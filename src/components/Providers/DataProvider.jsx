@@ -315,7 +315,7 @@ const DataProvider = ({children}) => {
                 "active":false,
                 "time":[18,30]
         },
-        "username":"kavindu-mane"
+        "username":""
 
     });
 

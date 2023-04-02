@@ -1,21 +1,20 @@
 import React from 'react'
 import Image from "../../resources/Telework-bro.svg"
 import {useData} from "../Providers/DataProvider"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const GetUsername = () => {
     const[data, setData] = useData();
 
     const verify = () => {
         const value = document.getElementById("username-input").value
-        const notification = document.getElementById("notification")
+        
 
-        if(value.includes(" ")) notification.textContent = "Username cannot include spaces."
-        else if(value === "") notification.textContent = "Username is required."
+        if(value.includes(" ")) notification("Username cannot include spaces.")
+        else if(value === "") notification("Username is required.")
 
-        if(value.includes(" ") || value === "") {
-            notification.classList += " keyframe"
-            setTimeout(() => notification.classList.remove("keyframe"), 5000)
-        }else{
+        if(!(value.includes(" ") || value === "")) {
             fetch("https://api.github.com/users/"+value)
             .then((result) => result.json())
             .then((d) => {
@@ -23,6 +22,12 @@ const GetUsername = () => {
                 setData({...data , "title":{...data["title"] , "value" : name} , "username": value})
             })
         }
+    }
+
+    const notification = (text) => {
+        toast.error(text, 
+            {position: "top-center", autoClose: 3000, hideProgressBar: true, closeOnClick: true,
+            pauseOnHover: true, draggable: true, progress: undefined, theme: "colored"});
     }
 
     return ( 
@@ -45,8 +50,9 @@ const GetUsername = () => {
 
             </div>
 
-            {/*Error notification  */}
-            <div className='notification p-2' id='notification'></div>
+        {/*Error notification  */}
+        <ToastContainer position="top-center" autoClose={3000} hideProgressBar newestOnTop={false} closeOnClick
+            rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="colored"/>
 
         </React.Fragment>
      );

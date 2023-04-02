@@ -247,21 +247,6 @@ code {
     transform: translateX(10px);
 }
 
-.notification{
-    background-color: #0cce8d;
-    color: #fff;
-    font-weight: 500;
-    border-radius: 5px;
-    text-align: center;
-    width: 90%;
-    max-width: 450px;
-    position: absolute;
-    left: 50%;
-    top: -500px;
-    transition: 800ms linear;
-    transform: translateX(-50%);
-}
-
 .scroll-to-top{
     width: 40px;
     height: 40px;
@@ -283,19 +268,6 @@ code {
     transform: scale(1) !important;
 }
 
-.keyframe{
-    animation: animation 4s;
-}
-
-@keyframes animation{
-    0% , 100%{
-        top:-500px
-    }
-    20% , 80%{
-        top: 80px;
-    }
-}
-
 .rotate-me{
     transition: 800ms ease-in-out;
     animation: rotate 4s infinite;
@@ -309,6 +281,18 @@ code {
     20% , 80%{
         transform: rotateX(0deg);
     }
+}
+
+.download-btn{
+    width:150px;
+}
+
+.rotate-span{
+    transition: 200ms ease-in-out;
+}
+
+.download-btn:hover .rotate-span{
+    transform: rotate(45deg);
 }
 
 @media (min-width:768px) {

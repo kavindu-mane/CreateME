@@ -8,7 +8,7 @@ import AddOns from '../AddOns/AddOns';
 import DownladOutput from '../DownladOutput/DownladOutput';
 
 const Dashboard = () => {
-    const[element , setElement] = useState(<DownladOutput/>) // BasicInfo
+    const[element , setElement] = useState(<BasicInfo/>) // BasicInfo
     const[nextActive , setNextActive] = useState(1)
     const[backBtnState , setBackBtnState] = useState(true)
     const[backBtnOpacity , setBackBtnOpacity] = useState("")
@@ -25,7 +25,7 @@ const Dashboard = () => {
         if(next === 3) event.target.innerHTML = "Done" 
 
         setNextActive(nextActive + 1)
-        window.scrollTo(0,0)
+        // window.scrollTo(0,0)
     }
 
     const elemetMoveBack = (event , next) => {
@@ -68,8 +68,9 @@ const Dashboard = () => {
     },[data])
 
     const setImages = useCallback((key1 , key2) =>{
-        const src= data[key1][key2]
-        const alt= data["username"]
+        const src = data[key1][key2]
+        const alt = data["username"]
+    
         return(
 `<!--START_SECTION:${key1.toUpperCase()}-->
 <div align = "${data[key1]["center"] ? "center" : "left"}">
@@ -98,7 +99,7 @@ const Dashboard = () => {
                 finalMd += startComment
                 value.split("\n").forEach(line => {
                     const mdFormats = {
-                                        "title" :`# <p align = ${align}>${line}&ensp;<img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" alt= ${data["username"]} width="35"></p>\n`,
+                                        "title" :`# <p align = ${align}>${line}&ensp;<img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" alt= "${data["username"]}" width="35"></p>\n`,
                                         "subtitle" : `### <p align = ${align}>${line}</p>\n`,
                                         "work":`***<p align = ${align}>${line}</p>***\n`
                                         }
@@ -148,19 +149,30 @@ const Dashboard = () => {
     }, [nextActive, field, setMarkdown, data , addSocialNSkill , setImages]);
 
     useEffect(() => {
-        if(nextActive === 5) document.getElementById("left-column").classList.remove("create","border") 
-        setBackBtnState(nextActive === 1 || 5 ? true : false)
-        setBackBtnOpacity(nextActive === 1 || 5 ? " opacity-0" : "")
+        if(nextActive === 5) {
+            const leftCol =  document.getElementById("left-column")
+            const rightCol =  document.getElementById("right-column")
+
+            leftCol.classList.remove("create","border")
+            leftCol.classList.add("col-xl-8")
+            rightCol.classList.add("col-xl-8")
+            leftCol.parentElement.classList.add("d-flex" , "justify-content-center" , "intro-div")
+        }
+
+        setBackBtnState((nextActive === 1 || nextActive === 5) ? true : false)
+        setBackBtnOpacity((nextActive === 1 ||nextActive === 5) ? " opacity-0" : "")
         setNextBtnState(nextActive === 5 ? true : false)
         setNextBtnOpacity(nextActive === 5 ? " opacity-0" : "")
+        setTimeout(() => window.scrollTo(0,0) , 2)
+        // window.scrollTo(0,0)
     },[nextActive])
-
+ 
     const backBtnClasses = 'btn fw-bold text-secondary mt-3 bg-transparent border-0 d-flex justify-content-center'
 
     return (
         <React.Fragment>
             <div className="pb-1" >
-                <button className={ backBtnClasses+ backBtnOpacity}
+                <button className={ backBtnClasses + backBtnOpacity}
                 onClick={(event) => elemetMoveBack(event , nextActive)} disabled = {backBtnState}>
                     <span className="material-symbols-outlined">arrow_back</span>
                 &ensp;Back</button>

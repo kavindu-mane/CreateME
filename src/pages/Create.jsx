@@ -17,7 +17,7 @@ const Create = () => {
                 <div className={"px-3 mt-5 " + commonClass} id = "left-column">
                     <Dashboard/>
                 </div>
-                <div className={"p-0 mt-3 mt-lg-5 " + commonClass}>
+                <div className={"p-0 mt-3 mt-lg-5 " + commonClass} id = "right-column">
                     <Demo/>
                 </div>
             </div>
