@@ -25,7 +25,7 @@ const Dashboard = () => {
         if(next === 3) event.target.innerHTML = "Done" 
 
         setNextActive(nextActive + 1)
-        // window.scrollTo(0,0)
+        setTimeout(() => window.scrollTo(0,0) , 2)
     }
 
     const elemetMoveBack = (event , next) => {
@@ -163,8 +163,6 @@ const Dashboard = () => {
         setBackBtnOpacity((nextActive === 1 ||nextActive === 5) ? " opacity-0" : "")
         setNextBtnState(nextActive === 5 ? true : false)
         setNextBtnOpacity(nextActive === 5 ? " opacity-0" : "")
-        setTimeout(() => window.scrollTo(0,0) , 2)
-        // window.scrollTo(0,0)
     },[nextActive])
  
     const backBtnClasses = 'btn fw-bold text-secondary mt-3 bg-transparent border-0 d-flex justify-content-center'
