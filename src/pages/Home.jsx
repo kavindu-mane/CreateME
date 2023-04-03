@@ -24,7 +24,7 @@ class Home extends Component {
                     {/* 2 buttons for go to repo and create pages*/}
                     <div className="container d-flex justify-content-center pb-5">
                         <div data-aos="fade-right" data-aos-duration="1000">
-                            <Buttons text = {"VISIT REPO (DEV)"} style_class ={"btn-secondary"} link = {"https://github.com/kavindu-mane/profile-readme-generator"}/>
+                            <Buttons text = {"VISIT REPO (DEV)"} style_class ={"btn-secondary"} link = {"https://github.com/kavindu-mane/CreateME"}/>
                         </div>
                         <div data-aos="fade-left" data-aos-duration="1000">
                             <Buttons style_class = {"btn-primary"} text = {"GET START"} link = {"create"}/>
@@ -37,7 +37,7 @@ class Home extends Component {
                     {/* 2 buttons for go to repo and create pages*/}
                     <div className="container d-flex justify-content-center pb-5">
                         <div data-aos="fade-right" data-aos-duration="1000">
-                            <Buttons text = {"VISIT REPO (DEV)"} style_class ={"btn-secondary"} link = {"https://github.com/kavindu-mane/profile-readme-generator"}/>
+                            <Buttons text = {"VISIT REPO (DEV)"} style_class ={"btn-secondary"} link = {"https://github.com/kavindu-mane/CreateME"}/>
                         </div>
                         <div data-aos="fade-left" data-aos-duration="1000">
                             <Buttons style_class = {"btn-primary"} text = {"GET START"} link = {"create"}/>
