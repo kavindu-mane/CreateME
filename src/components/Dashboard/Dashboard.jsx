@@ -70,13 +70,14 @@ const Dashboard = () => {
     const setImages = useCallback((key1 , key2) =>{
         const src = data[key1][key2]
         const alt = data["username"]
+        const langSec = key2 === "lang-link" ? "-LANGUAGES":""
     
         return(
-`<!--START_SECTION:${key1.toUpperCase()}-->
+`<!--START_SECTION:${key1.toUpperCase() + langSec}-->
 <div align = "${data[key1]["center"] ? "center" : "left"}">
     <img src = "${src}" alt = "${alt}"/> 
 </div>
-<!--END_SECTION:${key1.toUpperCase()}--><br/>\n\n`
+<!--END_SECTION:${key1.toUpperCase() + langSec}--><br/>\n\n`
     )
     },[data])
 

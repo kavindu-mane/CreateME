@@ -11,10 +11,10 @@ root.render(
   </React.StrictMode>
 );
 
-if(localStorage.getItem("theme") === "dark-theme"){
-  document.querySelector("html").className = "dark-theme";
-}else{
+if(localStorage.getItem("theme") === "light-theme"){
   document.querySelector("html").className = "light-theme";
+}else{
+  document.querySelector("html").className = "dark-theme";
 }
 
 reportWebVitals();

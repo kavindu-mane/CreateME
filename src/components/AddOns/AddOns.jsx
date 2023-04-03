@@ -42,9 +42,9 @@ const AddOns = () => {
         return data[key1][key2]
     }
 
-    const saveUrl = (event , key1 , key2 ) => {
+    const saveUrl = (event , key1 , key2) => {
         const Url = event.target.src
-        setData({...data , [key1] : {...data[key1] , [key2]:Url}})
+        setData(prevData => ({...prevData , [key1] : {...prevData[key1] , [key2]:Url}}))
     }
 
     const setActionStatus = (key1 , key2) => {
@@ -158,7 +158,7 @@ jobs:
 
             <div className="row mt-3">
                 <div className="col-12 col-sm-6">
-                     {checkBoxes("readme-stats" , "stats-active" , "Add stats card")}
+                    {checkBoxes("readme-stats" , "stats-active" , "Add stats card")}
                 </div>
                 <div className="col-12 col-sm-6">
                     {checkBoxes("readme-stats" , "lang-active" , "Add languages card")}
