@@ -15,4 +15,4 @@
 
 <br/>
 
-<div align = "center" ><img src = "https://createme.kavindu.me/webimg.png" alt = "CreateME" width ="80%"/></div>
+<div align = "center" ><img src = "https://createme.kavindu.me/webimg.png" alt = "CreateME" width ="90%"/></div>
