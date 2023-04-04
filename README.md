@@ -3,14 +3,12 @@
 # <p align = "center">CreateME | Github Profile Readme Generator</p>
 
 <div align = "center">
-  <img src = "https://img.shields.io/npm/v/npm" alt = "CreateME"/>
+  <img src = "https://img.shields.io/npm/v/npm?logo=npm&style="normal" alt = "CreateME"/>
   <img src="https://img.shields.io/website?down_color=inactive&down_message=updating&up_color=success&up_message=online&url=https%3A%2F%2Fcreateme.kavindu.me%2F" alt = "CreateME" >
-  <img src="https://img.shields.io/github/languages/count/kavindu-mane/CreateME" alt="CreateME">
-  <img src="https://img.shields.io/github/languages/top/kavindu-mane/CreateME" alt="CreateME">
   <img src="https://img.shields.io/github/v/release/kavindu-mane/CreateMe" alt="CreateME">
   <img src="https://img.shields.io/github/license/kavindu-mane/CreateME" alt="CreateME">
   <img src="https://img.shields.io/github/deployments/kavindu-mane/CreateME/github-pages" alt="CreateME">
-  <img src="https://img.shields.io/github/languages/code-size/kavindu-mane/CreateME" alt="CreateME">
+  <img src="https://img.shields.io/github/languages/code-size/kavindu-mane/CreateME?logo=github&style=normal" alt="CreateME">
 </div>
 
 <br/>
