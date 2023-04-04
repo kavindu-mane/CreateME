@@ -17,7 +17,7 @@ class Header extends Component {
 
                     <div className="d-flex align-items-center me-3 me-md-5">
                         {/* get start button */}
-                        <Buttons style_class = {"btn-primary"} text = {"GET START"} link = {"create"}/>
+                        <Buttons style_class = {"btn-primary " + (window.innerWidth < 576 ? "disabled opacity-0":"")} text = {"GET START"} link = {"create"}/>
                         {/* theme changer button */}
                         <button onClick={this.themeClick}
                         className="theme-btn p-1 ms-2 rounded-circle d-flex align-items-center bg-transparent border-0">

@@ -37,9 +37,9 @@ const GetUsername = () => {
                     <h2 className="f-raleway ms-2 username-heading rotate-me">Create
                     <span className="text-primary">ME</span></h2>
                     <h1 style={{fontFamily: "'Lato', sans-serif" , color: "var(--root-font)"}} className="fs-1 ms-2 username-heading">Best Profile README generator.</h1>
-                    <div className='d-flex align-items-center ms-2 mt-5'>
+                    <div className='d-flex align-items-center ms-2 mt-5 justify-content-center justify-content-sm-start'>
                         <input type="text" name="username-input" id="username-input" placeholder={"Enter your GitHub username"} 
-                        className= "p-1 username-input fs-4 fst-italic" />
+                        className= "p-1 username-input fs-4 fst-italic"/>
                         <button className='btn fs-1 mt-1 start-btn' id="arrow-btn" onClick={verify}>&rarr;</button>
                     </div>
                 </div>

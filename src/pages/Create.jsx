@@ -24,7 +24,7 @@ const Create = () => {
             )
         }else{
             return(
-                <div className="container-fluid mx-0 px-4 pt-5" id = {"get-username"}>
+                <div className="container-fluid mx-0 px-0 px-sm-4 pt-5" id = {"get-username"}>
                     <GetUsername/>
                 </div>
             )

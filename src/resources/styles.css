@@ -320,4 +320,10 @@ code {
         font-size: 4rem !important;
     }
 }
+
+@media (max-width:576px){
+    .username-input{
+        width: 90%;
+    }
+}
   
