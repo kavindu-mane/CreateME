@@ -1,4 +1,4 @@
-<div align = "center" ><img src = "https://user-images.githubusercontent.com/99143916/229766548-62e1896f-8cfe-4758-b2fe-7ada747aa366.png" alt = "CreateME" width = "80"/></div>
+<div align = "center" ><img src = "https://user-images.githubusercontent.com/99143916/229859545-dbe98e1a-4dd9-4b5d-ad6e-38ed3769411b.png" alt = "CreateME" width = "80"/></div>
 
 # <p align = "center">CreateME | Github Profile Readme Generator</p>
 
@@ -13,10 +13,11 @@
 
 <br/>
 
-<div align = "center" ><img src = "https://createme.kavindu.me/webimg.png" alt = "CreateME" width ="90%"/></div>
+<div align = "center" ><img src = "https://user-images.githubusercontent.com/99143916/229852646-be8037e2-cd51-45ba-b1a5-c8a035dd69a4.png" alt = "CreateME" width ="90%"/></div>
 
 ## Features
 
+#### 🔰 Support both Dark & Light Theme
 #### 🔰 Live Preview with Markdown Text
 #### 🔰 Show Your GitHub Stats
 #### 🔰 Show Your Tech Stack
@@ -25,6 +26,7 @@
 #### 🔰 Show Your Profile Visitors Count
 #### 🔰 Show Your GitHub Trophies
 #### 🔰 Show Cuurent Working Stats with Wakatime & GitHub Actions
+#### 🔰 More Customization Options
 
 ## Our Social Links
 
