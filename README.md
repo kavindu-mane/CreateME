@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/github/languages/count/kavindu-mane/CreateME" alt="CreateME">
   <img src="https://img.shields.io/github/languages/top/kavindu-mane/CreateME" alt="CreateME">
   <img src="https://img.shields.io/github/v/release/kavindu-mane/CreateMe" alt="CreateME">
-  <img alt="GitHub" src="https://img.shields.io/github/license/kavindu-mane/CreateME">
+  <img src="https://img.shields.io/github/license/kavindu-mane/CreateME" alt="CreateME">
   <img src="https://img.shields.io/github/deployments/kavindu-mane/CreateME/github-pages" alt="CreateME">
   <img src="https://img.shields.io/github/languages/code-size/kavindu-mane/CreateME" alt="CreateME">
 </div>
