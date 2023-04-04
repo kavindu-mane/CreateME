@@ -5,7 +5,7 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="author" content="Kavindu Manahara">
+    <meta name="author" content="Kavindu Manahara"/>
     <meta
       name="description"
       content="CreateME | Create Amazing GitHub Profile README Without Coding.Show your skills, experience and projects and many more. Generate markdown for your profile with just a few clicks!"
@@ -19,13 +19,13 @@
       property="og:description"
       content="CreateME | Create Amazing GitHub Profile README Without Coding.Show your skills, experience and projects and many more. Generate markdown for your profile with just a few clicks!"
     />
-    <meta property="og:image" content="https://createme.kavindu.me/webimg.png"/>
-    <meta name=”twitter:card” content=”summary_large_image”>
-    <meta property="twitter:url" content="https://createme.kavindu.me/"/>
-    <meta name=”twitter:creator” content=”@kavindu_mane>
-    <meta property="twitter:title" content="CreateME | Profile README Generator"/>
+    <meta property="og:image" itemprop="image" content="https://createme.kavindu.me/webimg.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:url" content="https://createme.kavindu.me/"/>
+    <meta name="twitter:creator" content="@kavindu_mane">
+    <meta name="twitter:title" content="CreateME | Profile README Generator"/>
     <meta
-      property="twitter:description"
+      name="twitter:description"
       content="CreateME | Create Amazing GitHub Profile README Without Coding.Show your skills, experience and projects and many more. Generate markdown for your profile with just a few clicks!"
     />
     <meta property="twitter:image" content="https://createme.kavindu.me/webimg.png"/>
@@ -63,8 +63,7 @@
      <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Raleway:wght@700&display=swap" rel="stylesheet">
 
      <!-- AOS -->
-     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    
+     <link rel="stylesheet" href="%PUBLIC_URL%/aos.css" />
      <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -99,12 +98,18 @@
         }
       }(window.location))
     </script>
+  
+  <style>
+     #root{
+      overflow-x: hidden;
+    }
+  </style>
 
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root" style="overflow-x: hidden;"></div>
-    <h1 style="display: none;">CreateME | Profile README Generator</h1>
+    <div id="root"></div>
+    <h1 class="d-none">CreateME Easy and Amazing GitHub Profile README Generator</h1>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -116,7 +121,7 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
     <!-- AOS -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="%PUBLIC_URL%/aos.js"></script>
     <script>
       AOS.init();
     </script>
