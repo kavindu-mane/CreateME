@@ -1,6 +1,6 @@
 <div align = "center" ><img src = "https://user-images.githubusercontent.com/99143916/229859545-dbe98e1a-4dd9-4b5d-ad6e-38ed3769411b.png" alt = "CreateME" width = "80"/></div>
 
-# <p align = "center">CreateME | Github Profile Readme Generator</p>
+# <p align = "center">CreateME | GitHub Profile Readme Generator</p>
 
 <div align = "center">
   <img src = "https://img.shields.io/npm/v/npm?logo=npm&style="normal" alt = "CreateME"/>
