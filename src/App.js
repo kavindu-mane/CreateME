@@ -9,11 +9,11 @@ import DataProvider from "./components/Providers/DataProvider";
 import ScrollToTop from "./components/Common/ScrollToTop";
 import "./resources/styles.css"
 
-
 const linkedObject = {
   "/":<Home/> ,
   "/create": <DataProvider><Create/></DataProvider> ,
 }
+
 const addScrollToTop = () => {
   const docH = document.documentElement.scrollHeight
   const element = document.getElementById("scroll-top")
@@ -22,7 +22,7 @@ const addScrollToTop = () => {
   }else{
     element.classList.remove("scroll-btn-show")
   }
-}
+}  
 
 function App() {
   return (
