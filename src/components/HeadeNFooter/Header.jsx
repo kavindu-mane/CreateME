@@ -20,7 +20,7 @@ class Header extends Component {
                         <Buttons style_class = {"btn-primary " + (window.innerWidth < 576 ? "disabled opacity-0":"")} text = {"GET START"} link = {"create"}/>
                         {/* theme changer button */}
                         <button onClick={this.themeClick}
-                        className="theme-btn p-1 ms-2 rounded-circle d-flex align-items-center bg-transparent border-0">
+                        className="theme-btn p-1 ms-2 rounded-circle d-flex align-items-center bg-transparent border-0" aria-label="theme-btn">
                         <span className="material-symbols-outlined theme-icon"></span>
                         </button>
                     </div>

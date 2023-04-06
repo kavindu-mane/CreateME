@@ -47,6 +47,7 @@
 .icon-rotate{
     transition: 300ms linear;
     height: 45px;
+    width: 45px;
 }
 
 .icon-filter{
@@ -61,10 +62,15 @@
 .image-area{
     min-height: 300px;
     max-height: 500px;
+    height: 100%;
+    width: 100%;
 }
 
 .image-area-example{
     max-height: 400px;
+    max-height: 1095px;
+    height: 100%;
+    width: 100%;
     border: 1px solid #d3d3d3;
     border-radius: 10px;
     padding: 0;
@@ -73,6 +79,7 @@
 
 .social-icons{
     width: 20px;
+    height: 20px;
 }
 
 .social-icons-bg{
@@ -106,7 +113,7 @@
 
 .intro-div::before{
     content: "";
-    background-image: url("./bg.png");
+    background-image: url("./bg.webp");
     background-repeat:no-repeat;
     background-size:cover;
     position: absolute;
@@ -226,7 +233,7 @@ code {
 
 #get-username::before{
     content: "";
-    background-image: url("./bg.png");
+    background-image: url("./bg.webp");
     background-repeat:no-repeat;
     background-size:cover;
     position: absolute;
@@ -311,6 +318,7 @@ code {
 
     .icon-rotate{
         height: 60px;
+        width: 60px;
     }
     
 }

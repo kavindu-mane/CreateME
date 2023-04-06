@@ -1,6 +1,6 @@
 import React , {Component} from "react";
 import StatImage from "../../resources/stats.svg";
-import ExampleImage from "../../resources/example.png"
+import ExampleImage from "../../resources/example.webp"
 
 class ImageArea extends Component {
     render() { 

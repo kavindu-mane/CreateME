@@ -14,10 +14,10 @@ class Home extends Component {
                             <h1 className="pt-3 pt-md-5 f-raleway intro">Create Amazing 
                             <span className="text-primary"> GitHub Profile README</span> Without 
                             <span className="text-"> Coding.</span></h1>
-                            <h5 className="text-secondary fw-normal">Show your skills, 
+                            <p className="text-secondary fw-normal fs-5">Show your skills, 
                             experience and projects and many more. Generate markdown for your profile with 
                             just a few clicks!
-                            </h5>
+                            </p>
                         </div>
                     </div>
                     

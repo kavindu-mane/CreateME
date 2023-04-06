@@ -17,7 +17,7 @@ class Section extends Component {
                                 <div className="d-block d-md-none">
                                     <div className="text-center">
                                         <h1 className="f-raleway section-heading">{caption_1}<br/><span className="text-primary section-heading">{caption_2}</span></h1>
-                                        <h6 className="text-secondary fw-normal">{caption_3}</h6>
+                                        <p className="text-secondary fs-6 fw-normal">{caption_3}</p>
                                     </div>
                                 </div>
                             </div>
@@ -27,7 +27,7 @@ class Section extends Component {
                                 <div className="d-none d-md-block">
                                     <div className="text-center">
                                         <h1 className="f-raleway section-heading">{caption_1}<br/><span className="text-primary section-heading">{caption_2}</span></h1>
-                                        <h6 className="text-secondary fw-normal">{caption_3}</h6>
+                                        <p className="text-secondary fs-6 fw-normal">{caption_3}</p>
                                     </div>
                                 </div>
                                 <div className="d-block d-md-none">
