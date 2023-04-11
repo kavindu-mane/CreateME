@@ -17,7 +17,6 @@
 
 ## Features
 
-#### 🔰 Support both Dark & Light Theme
 #### 🔰 Live Preview with Markdown Text
 #### 🔰 Show Your GitHub Stats
 #### 🔰 Show Your Tech Stack
