@@ -52,7 +52,7 @@ const Skills = () => {
                     <SkillSection start={119} end = {123} align = "text-end" title = "Backend as a Service (BaaS)" buttonClick = {buttonClick}/>
                     <SkillSection start={123} end = {130} align = "" title = "Testing" buttonClick = {buttonClick}/>
                     <SkillSection start={130} end = {146} align = "text-end" title = "Static Site Generators" buttonClick = {buttonClick}/>
-                    <SkillSection start={146} end = {164} align = "" title = "Others" buttonClick = {buttonClick}/>
+                    <SkillSection start={146} end = {165} align = "" title = "Others" buttonClick = {buttonClick}/>
                 </>
             )
         }
