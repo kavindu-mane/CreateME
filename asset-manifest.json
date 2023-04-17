@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.4b408bc8.css",
-    "main.js": "/static/js/main.ad369cf8.js",
+    "main.js": "/static/js/main.1099a555.js",
     "static/js/787.34c6be8f.chunk.js": "/static/js/787.34c6be8f.chunk.js",
     "static/media/bg.webp": "/static/media/bg.9ad10785d7a548d00b65.webp",
     "static/media/Telework-bro.svg": "/static/media/Telework-bro.fb96bc7da1bf90734e91af88a214e2bc.svg",
@@ -10,11 +10,11 @@
     "static/media/stats.svg": "/static/media/stats.4d42776646d476e9c7f8fafa60c2a648.svg",
     "index.html": "/index.html",
     "main.4b408bc8.css.map": "/static/css/main.4b408bc8.css.map",
-    "main.ad369cf8.js.map": "/static/js/main.ad369cf8.js.map",
+    "main.1099a555.js.map": "/static/js/main.1099a555.js.map",
     "787.34c6be8f.chunk.js.map": "/static/js/787.34c6be8f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4b408bc8.css",
-    "static/js/main.ad369cf8.js"
+    "static/js/main.1099a555.js"
   ]
 }
